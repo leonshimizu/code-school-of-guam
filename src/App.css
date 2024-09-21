@@ -39,12 +39,14 @@
 }
 
 .nav-links a:hover {
-  color: #ff4a4a; /* Match CTA button color */
+  color: #ff4a4a;
+  /* Match CTA button color */
 }
 
 /* Hamburger Menu for Mobile */
 .hamburger {
-  display: none; /* Hidden by default (only shown on mobile) */
+  display: none;
+  /* Hidden by default (only shown on mobile) */
   flex-direction: column;
   cursor: pointer;
 }
@@ -76,16 +78,19 @@
 /* For Mobile Screens (Responsive Navigation) */
 @media (max-width: 768px) {
   .hamburger {
-    display: flex; /* Show hamburger on mobile */
+    display: flex;
+    /* Show hamburger on mobile */
   }
 
   .nav-links {
-    display: none; /* Hide default nav links */
+    display: none;
+    /* Hide default nav links */
     flex-direction: column;
   }
 
   .nav-links.open {
-    display: block; /* Show nav links when hamburger is clicked */
+    display: block;
+    /* Show nav links when hamburger is clicked */
     position: absolute;
     top: 70px;
     right: 0;
@@ -99,13 +104,16 @@
   }
 
   .nav-links a {
-    font-size: 1.5rem; /* Increase size for easier clicking on mobile */
+    font-size: 1.5rem;
+    /* Increase size for easier clicking on mobile */
     padding: 15px;
   }
 }
 
+/* Hero Section */
 .hero {
-  background-image: url('./assets/GuamLatteStones.jpg'); /* Correct path to your image */
+  background-image: url('./assets/GuamLatteStones.jpg');
+  /* Correct path to your image */
   background-size: cover;
   background-position: center;
   padding: 150px 20px;
@@ -129,7 +137,8 @@
 }
 
 .cta-button {
-  background-color: #ff4a4a;
+  background-color: #007bff;
+  /* Updated to match the new CTA color */
   padding: 15px 40px;
   color: white;
   border-radius: 5px;
@@ -138,9 +147,10 @@
 }
 
 .cta-button:hover {
-  background-color: #ff0000;
+  background-color: #0056b3;
 }
 
+/* About Section */
 .about {
   padding: 100px 20px;
   text-align: center;
@@ -152,12 +162,61 @@
   margin-bottom: 30px;
 }
 
-.about p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto;
+.about h3 {
+  font-size: 1.8rem;
+  margin-top: 20px;
 }
 
+.about p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
+/* Programs Section */
+.programs {
+  padding: 100px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.programs h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.programs-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.program-item {
+  background-color: white;
+  padding: 30px;
+  margin: 15px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.program-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.program-item p,
+.program-item ul {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.program-item ul {
+  padding-left: 20px;
+}
+
+/* Curriculum Section */
 .curriculum {
   padding: 100px 20px;
   text-align: center;
@@ -169,6 +228,13 @@
   margin-bottom: 30px;
 }
 
+.curriculum p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
 .curriculum-content {
   display: flex;
   justify-content: space-around;
@@ -176,25 +242,81 @@
 }
 
 .curriculum-item {
-  flex: 1;
-  min-width: 250px;
-  margin: 20px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 8px;
+  max-width: 400px;
   text-align: left;
 }
 
 .curriculum-item h3 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.curriculum-item p {
+.curriculum-item p,
+.curriculum-item ul {
   font-size: 1.1rem;
-  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
+.curriculum-item ul {
+  padding-left: 20px;
+}
+
+/* Internship Section */
+.internship {
+  padding: 100px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.internship h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.internship p,
+.internship ul {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
+.internship ul {
+  padding-left: 20px;
+}
+
+/* Career Services Section */
+.career-services {
+  padding: 100px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.career-services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.career-services p,
+.career-services ul {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
+.career-services ul {
+  padding-left: 20px;
+}
+
+/* Pricing Section */
 .pricing {
   padding: 100px 20px;
-  background-color: #f8f9fa;
+  background-color: #fff;
   text-align: center;
 }
 
@@ -206,26 +328,41 @@
 .pricing-content {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .pricing-box {
   background-color: white;
   padding: 30px;
+  margin: 15px;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
+  max-width: 400px;
+  text-align: left;
 }
 
 .pricing-box h3 {
   font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.pricing-box .price {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.pricing-box p,
+.pricing-box ul {
+  font-size: 1.1rem;
   margin-bottom: 10px;
 }
 
-.pricing-box p {
-  font-size: 1.5rem;
-  color: #007bff;
+.pricing-box ul {
+  padding-left: 20px;
 }
 
+/* Admissions Section */
 .admissions {
   background-color: #343a40;
   color: white;
@@ -238,22 +375,72 @@
   margin-bottom: 20px;
 }
 
-.admissions p {
+.admissions p,
+.admissions ol {
   font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: left;
+}
+
+.admissions ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.admissions a.cta-button {
+  background-color: #28a745;
+}
+
+.admissions a.cta-button:hover {
+  background-color: #218838;
+}
+
+/* FAQs Section */
+.faqs {
+  padding: 100px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.faqs h2 {
+  font-size: 2.5rem;
   margin-bottom: 30px;
 }
 
-.cta-button {
-  background-color: #28a745;
-  padding: 15px 30px;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1.3rem;
+.faqs-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.cta-button:hover {
-  background-color: #218838;
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h3 {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+}
+
+.faq-item h3::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item h3.active::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  margin-top: 10px;
+  font-size: 1.1rem;
 }
 
 /* Contact Section */
@@ -333,6 +520,7 @@
   background-color: #218838;
 }
 
+/* Footer */
 .footer {
   background-color: #222;
   color: white;
@@ -349,6 +537,56 @@
   text-decoration: underline;
 }
 
+/* Global Styles */
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CTA Button */
+.cta-button {
+  background-color: #007bff;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
 }
