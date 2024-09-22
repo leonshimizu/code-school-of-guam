@@ -1,5 +1,6 @@
 // Header.js
 import React, { useState } from 'react';
+import logo from '../assets/CSG_Logo.png';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +9,9 @@ function Header() {
     <header className="header">
       <nav className="navbar">
         <div className="logo">
-          <a href="#hero">Code School of Guam</a>
+          <a href="#hero">
+            <img src={logo} alt="Code School of Guam Logo" className="logo-img" />
+          </a>
         </div>
         <div
           className={`hamburger ${isOpen ? 'open' : ''}`}
