@@ -11,8 +11,10 @@ function Hero() {
           Try our first week <strong>free</strong>!
         </p>
         <a
-          href="#free-trial"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf_WFGE9-rw6AZXbHrnujlADAmQrK31fneZkWfs0WmDB42NoQ/viewform?usp=sf_link"
           className="cta-button"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Try a Free Week
         </a>
