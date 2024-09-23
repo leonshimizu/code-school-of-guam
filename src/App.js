@@ -1,13 +1,11 @@
-// App.js
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Programs from './components/Programs';
+import ProgramsAndPricing from './components/ProgramsAndPricing';
 import Curriculum from './components/Curriculum';
 import Internship from './components/Internship';
 import CareerServices from './components/CareerServices';
-import Pricing from './components/Pricing';
 import Admissions from './components/Admissions';
 import FAQs from './components/FAQs';
 import Contact from './components/Contact';
@@ -20,11 +18,10 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <Programs />
+      <ProgramsAndPricing />
       <Curriculum />
       <Internship />
       <CareerServices />
-      <Pricing />
       <Admissions />
       <FAQs />
       <Contact />
