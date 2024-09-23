@@ -14,12 +14,12 @@ function Footer() {
           <a href="#terms-of-service">Terms of Service</a>
         </p>
         <p>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            Facebook
+          <a href="https://www.instagram.com/codeschoolofguam?igsh=MTUzcHZ6NmlzNHJ0eQ==" target="_blank" rel="noopener noreferrer">
+            Instagram
           </a>{' '}
           |{' '}
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            LinkedIn
+          <a href="https://www.facebook.com/share/NUKZidEGUJshLwBi/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer">
+            Facebook
           </a>
         </p>
       </div>
