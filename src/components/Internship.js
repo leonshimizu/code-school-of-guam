@@ -17,7 +17,7 @@ function Internship() {
       <h3>Internship Structure</h3>
       <ul>
         <li>Onboarding week to set up and familiarize with the project</li>
-        <li>Weekly sprints with 2-3 tickets assigned based on your estimates</li>
+        <li>Weekly sprints with tasks assigned based on your estimates</li>
         <li>Sprint planning and retrospective meetings</li>
         <li>Daily stand-up meetings for progress updates</li>
       </ul>

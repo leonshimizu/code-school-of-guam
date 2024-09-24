@@ -1,3 +1,4 @@
+// Contact.js
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
 
@@ -18,10 +19,10 @@ function Contact() {
 
     // Send the email via EmailJS
     emailjs.sendForm(
-      'service_jt2foj7',
-      'template_un3f26f',
+      'service_jt2foj7', // Your EmailJS service ID
+      'template_un3f26f', // Your EmailJS template ID
       form.current,
-      '-4iZEmtDtCvBEn4gX'
+      '-4iZEmtDtCvBEn4gX' // Your EmailJS user ID
     )
     .then((result) => {
       alert('Message sent successfully!');
@@ -37,6 +38,16 @@ function Contact() {
     <section id="contact" className="contact">
       <div className="contact-container">
         <h2>Contact Us</h2>
+        <p>
+          Have questions or need more information? Reach out to us, and we'll be happy to assist you.
+        </p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:codeschoolofguam@gmail.com">codeschoolofguam@gmail.com</a>
+        </p>
+        <p>
+          <strong>Phone:</strong> <a href="tel:+16714830219">(671) 483-0219</a>
+        </p>
+
         <form ref={form} onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
             <label htmlFor="name">Name</label>

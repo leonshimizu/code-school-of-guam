@@ -335,7 +335,7 @@
 
 /* Admissions Section */
 .admissions {
-  background-color: #343a40; /* Dark background */
+  background-color: #343a40;
   color: white;
   padding: 100px 20px;
   text-align: center;
@@ -360,6 +360,18 @@
   padding-left: 20px;
 }
 
+.admissions .highlight-link {
+  color: #28a745;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.admissions .highlight-link:hover {
+  color: #ffc107;
+  text-decoration: none;
+}
+
+/* CTA Button */
 .admissions a.cta-button {
   background-color: #28a745;
 }
@@ -367,6 +379,7 @@
 .admissions a.cta-button:hover {
   background-color: #218838;
 }
+
 
 /* FAQs Section */
 .faqs {
@@ -489,6 +502,31 @@
 
 .submit-button:hover {
   background-color: #218838;
+}
+
+/* Policies Section */
+.policies {
+  padding: 100px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.policies h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.policies h3 {
+  font-size: 1.8rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.policies p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: left;
 }
 
 /* Footer */

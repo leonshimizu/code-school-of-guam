@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -10,6 +11,7 @@ import Admissions from './components/Admissions';
 import FAQs from './components/FAQs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Policies from './components/Policies'; // New component
 import './App.css';
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
       <Admissions />
       <FAQs />
       <Contact />
+      <Policies />
       <Footer />
     </div>
   );

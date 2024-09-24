@@ -1,3 +1,4 @@
+// Header.js
 import React, { useState } from 'react';
 import logo from '../assets/CSG_Logo.png';
 
@@ -22,11 +23,10 @@ function Header() {
         </div>
         <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
           <li><a href="#about" onClick={() => setIsOpen(false)}>About Us</a></li>
-          <li><a href="#programs" onClick={() => setIsOpen(false)}>Programs</a></li>
+          <li><a href="#programs-pricing" onClick={() => setIsOpen(false)}>Programs & Pricing</a></li>
           <li><a href="#curriculum" onClick={() => setIsOpen(false)}>Curriculum</a></li>
           <li><a href="#internship" onClick={() => setIsOpen(false)}>Internship</a></li>
           <li><a href="#career-services" onClick={() => setIsOpen(false)}>Career Services</a></li>
-          <li><a href="#pricing" onClick={() => setIsOpen(false)}>Pricing & Financing</a></li>
           <li><a href="#admissions" onClick={() => setIsOpen(false)}>Admissions</a></li>
           <li><a href="#faqs" onClick={() => setIsOpen(false)}>FAQs</a></li>
           <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact Us</a></li>

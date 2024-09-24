@@ -10,10 +10,14 @@ function CareerServices() {
         services include:
       </p>
       <ul>
-        <li>Resume building workshops</li>
-        <li>Interview preparation sessions</li>
-        <li>Job placement support and networking opportunities</li>
-        <li>Access to our alumni network</li>
+        <li>Personalized career action plans</li>
+        <li>Resume building and review</li>
+        <li>LinkedIn profile setup and optimization</li>
+        <li>Portfolio development</li>
+        <li>Interview preparation and mock interviews</li>
+        <li>Job search strategies and application assistance</li>
+        <li>Networking opportunities and professional branding</li>
+        <li>Post-graduation support for up to 6 months</li>
       </ul>
     </section>
   );
