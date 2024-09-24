@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-content">
         <p>&copy; {new Date().getFullYear()} Code School of Guam</p>
         <p>
-          <a href="mailto:info@codeschoolguam.com">info@codeschoolguam.com</a>
+          <a href="mailto:codeschoolofguam@gmail.com">codeschoolofguam@gmail.com</a>
         </p>
         <p>
           <a href="#privacy-policy">Privacy Policy</a> |{' '}
