@@ -11,7 +11,7 @@ function Curriculum() {
       </p>
       <div className="curriculum-content">
         <div className="curriculum-item">
-          <h3>Pre-Work (Optional)</h3>
+          <h3>Pre-Work</h3>
           <p>
             Self-paced foundational coding exercises to prepare you for the program.
           </p>
