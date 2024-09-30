@@ -1,7 +1,7 @@
 /* Header Styles */
 .header {
   background-color: #343a40;
-  padding: 20px 40px;
+  padding: 5px 40px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -16,16 +16,12 @@
   align-items: center;
 }
 
-.logo a {
+.logo-text {
   color: white;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  /* Adjust the size as per your need */
   font-weight: bold;
   text-decoration: none;
-}
-
-.logo img {
-  height: 60px;
-  width: auto;
 }
 
 .nav-links {
@@ -117,17 +113,26 @@
 
 /* Hero Section */
 .hero {
-  background-image: url('./assets/GuamLatteStones.jpg'); /* Correct path to your image */
+  background-image: url('./assets/CSG-Header.jpeg');
   background-size: cover;
   background-position: center;
   padding: 150px 20px;
+  /* Adjust padding based on where you want the text */
   text-align: center;
   color: white;
+  position: relative;
+  /* Added to enable positioning of child elements */
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  top: 10px;
+  /* Adjust to lower or raise the text */
+  left: 0;
+  transform: translateY(5%);
+  /* Slightly adjust the vertical alignment */
 }
 
 .hero h1 {
@@ -157,7 +162,8 @@
 .about {
   padding: 100px 20px;
   text-align: center;
-  background-color: #f4f4f4; /* Light gray */
+  background-color: #f4f4f4;
+  /* Light gray */
 }
 
 .about h2 {
@@ -180,7 +186,8 @@
 /* Programs & Pricing Section */
 .programs-pricing {
   padding: 100px 20px;
-  background-color: #eaeaea; /* Slightly darker gray */
+  background-color: #eaeaea;
+  /* Slightly darker gray */
   text-align: center;
 }
 
@@ -240,7 +247,8 @@
 .curriculum {
   padding: 100px 20px;
   text-align: center;
-  background-color: #f4f4f4; /* Light gray */
+  background-color: #f4f4f4;
+  /* Light gray */
 }
 
 .curriculum h2 {
@@ -262,7 +270,8 @@
 }
 
 .curriculum-item {
-  background-color: #ffffff; /* White */
+  background-color: #ffffff;
+  /* White */
   padding: 20px;
   margin: 15px;
   border-radius: 8px;
@@ -288,7 +297,8 @@
 /* Internship Section */
 .internship {
   padding: 100px 20px;
-  background-color: #eaeaea; /* Slightly darker gray */
+  background-color: #eaeaea;
+  /* Slightly darker gray */
   text-align: center;
 }
 
@@ -312,7 +322,8 @@
 /* Career Services Section */
 .career-services {
   padding: 100px 20px;
-  background-color: #f4f4f4; /* Light gray */
+  background-color: #f4f4f4;
+  /* Light gray */
   text-align: center;
 }
 
@@ -384,7 +395,8 @@
 /* FAQs Section */
 .faqs {
   padding: 100px 20px;
-  background-color: #eaeaea; /* Slightly darker gray */
+  background-color: #eaeaea;
+  /* Slightly darker gray */
   text-align: center;
 }
 
@@ -429,7 +441,8 @@
 
 /* Contact Section */
 .contact {
-  background-color: #f4f4f4; /* Light gray */
+  background-color: #f4f4f4;
+  /* Light gray */
   padding: 100px 20px;
   text-align: center;
 }

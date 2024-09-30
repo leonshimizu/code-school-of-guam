@@ -6,17 +6,13 @@ function Hero() {
     <section id="hero" className="hero">
       <div className="hero-content">
         <h1>Launch Your Tech Career with Us</h1>
-        <p>
-          Join Guam's first coding bootcamp and become a software engineer.
-          Try our first week <strong>free</strong>!
-        </p>
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSf_WFGE9-rw6AZXbHrnujlADAmQrK31fneZkWfs0WmDB42NoQ/viewform?usp=sf_link"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc84Vee53gbVhwamS77qvizzV8vGri4Ms83kIEzqgN6vg7wZA/viewform?vc=0&c=0&w=1&flr=0"
           className="cta-button"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Try a Free Week
+          Apply Now!
         </a>
       </div>
     </section>
