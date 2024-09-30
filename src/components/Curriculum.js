@@ -1,4 +1,3 @@
-// Curriculum.js
 import React from 'react';
 
 function Curriculum() {
@@ -8,6 +7,16 @@ function Curriculum() {
       <p>
         Our comprehensive curriculum is designed to equip you with the skills
         needed to succeed as a full-stack software engineer.
+      </p>
+      <h3>Class Schedule</h3>
+      <p>
+        Classes are held Monday through Thursday from 6:00 PM to 9:00 PM, and
+        Saturdays from 8:00 AM to 4:00 PM. This schedule allows for immersive
+        learning while accommodating those with daytime commitments.
+      </p>
+      <p>
+        We are considering adding daytime classes in the future to better serve
+        our students' needs.
       </p>
       <div className="curriculum-content">
         <div className="curriculum-item">

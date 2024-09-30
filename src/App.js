@@ -11,7 +11,7 @@ import Admissions from './components/Admissions';
 import FAQs from './components/FAQs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Policies from './components/Policies'; // New component
+import Policies from './components/Policies';
 import './App.css';
 
 function App() {
