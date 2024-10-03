@@ -1,4 +1,3 @@
-// FAQs.js
 import React, { useState } from 'react';
 
 function FAQs() {
@@ -49,6 +48,30 @@ function FAQs() {
       question: 'How can I access the policies?',
       answer:
         'You can view our detailed policies, including the Code of Conduct, Attendance Policy, and Refund Policy, in the Policies section of our website.',
+    },
+    {
+      question: 'What resources do you recommend to get started with coding?',
+      answer: (
+        <>
+          We recommend exploring free coding platforms like{' '}
+          <a
+            href="https://www.freecodecamp.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            freeCodeCamp
+          </a>{' '}
+          or{' '}
+          <a
+            href="https://replit.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Replit
+          </a>{' '}
+          to get familiar with coding concepts and practice in-browser before starting pre-work.
+        </>
+      ),
     },
   ];
 

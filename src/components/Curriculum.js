@@ -22,7 +22,7 @@ function Curriculum() {
         <div className="curriculum-item">
           <h3>Pre-Work</h3>
           <p>
-            Self-paced foundational coding exercises to prepare you for the program.
+            Self-paced foundational coding exercises to prepare you for the program. We'll provide guidance on getting started with coding platforms, installing software like VSCode, Git, and Zoom, and creating a GitHub account.
           </p>
         </div>
         <div className="curriculum-item">

@@ -1,4 +1,3 @@
-// About.js
 import React from 'react';
 
 function About() {
@@ -35,6 +34,13 @@ function About() {
         allows students to build strong relationships with their instructors
         and peers, fostering a collaborative learning environment where
         everyone is set up for success.
+      </p>
+
+      <h3>Enrollment Process</h3>
+      <p>
+        Secure your spot by completing the enrollment agreement and paying the 
+        non-refundable $500 deposit. Various payment options are available, 
+        including full upfront payment with a $1,000 discount or installment plans.
       </p>
 
       <h3>Class Schedule</h3>

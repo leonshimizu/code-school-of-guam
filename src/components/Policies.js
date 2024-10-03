@@ -1,4 +1,3 @@
-// Policies.js
 import React from 'react';
 
 function Policies() {
@@ -9,6 +8,11 @@ function Policies() {
       <h3>Attendance Policy</h3>
       <p>
         Attendance is crucial for your success. Students are expected to attend all scheduled classes punctually. Missing more than three unexcused classes may result in dismissal from the program without a refund. Excused absences are allowed for situations beyond your control (e.g., medical emergencies). Documentation may be required after three excused absences.
+      </p>
+
+      <h3>Admissions Communication</h3>
+      <p>
+        After submitting your application, you will receive a series of emails detailing next steps. This includes scheduling an interview, payment instructions for the deposit, and onboarding information.
       </p>
 
       <h3>Code of Conduct</h3>

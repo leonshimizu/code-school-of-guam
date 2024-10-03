@@ -19,7 +19,9 @@ function Admissions() {
             online application form
           </a>.
         </li>
-        <li>Attend a brief interview with our admissions team.</li>
+        <li>
+          Receive an email confirmation with next steps, including scheduling an interview with our admissions team.
+        </li>
         <li>
           Secure your spot by completing the enrollment agreement and submitting
           your non-refundable tuition deposit.

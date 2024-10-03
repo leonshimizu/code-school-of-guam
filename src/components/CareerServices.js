@@ -1,4 +1,3 @@
-// CareerServices.js
 import React from 'react';
 
 function CareerServices() {
@@ -19,6 +18,11 @@ function CareerServices() {
         <li>Networking opportunities and professional branding</li>
         <li>Post-graduation support for up to 6 months</li>
       </ul>
+
+      <h3>Getting Started Resources</h3>
+      <p>
+        We recommend exploring free coding platforms like <a href="https://www.freecodecamp.org" target="_blank" rel="noopener noreferrer">freeCodeCamp</a> or <a href="https://replit.com/" target="_blank" rel="noopener noreferrer">Replit</a> to get familiar with coding concepts and practice in-browser before starting pre-work.
+      </p>
     </section>
   );
 }
