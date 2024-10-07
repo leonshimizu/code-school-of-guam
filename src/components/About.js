@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function About() {
   return (
@@ -38,8 +39,8 @@ function About() {
 
       <h3>Enrollment Process</h3>
       <p>
-        Secure your spot by completing the enrollment agreement and paying the 
-        non-refundable $500 deposit. Various payment options are available, 
+        Secure your spot by completing the enrollment agreement and paying the
+        non-refundable $500 deposit. Various payment options are available,
         including full upfront payment with a $1,000 discount or installment plans.
       </p>
 
@@ -55,19 +56,11 @@ function About() {
         Stay tuned for updates!
       </p>
 
-      <h3>Meet Our Founder</h3>
-      <p>
-        The founder of Code School of Guam is a dedicated software engineer
-        with over three years of professional experience. After finding
-        direction through a coding bootcamp, they worked as a teacher’s
-        assistant and instructor before founding Code School of Guam.
-      </p>
-      <p>
-        The goal has always been to start a coding school that bridges the gap
-        between education and employment. By offering real-world internships
-        to students through a software firm, Code School of Guam provides
-        hands-on experience and the best chance to succeed in their careers.
-      </p>
+      <div className="founder-section">
+        <h3>Meet Our Founder</h3>
+        <p>Learn more about the founder of Code School of Guam, Leon Shimizu.</p>
+        <Link to="/founder" className="cta-button">Read More</Link>
+      </div>
     </section>
   );
 }

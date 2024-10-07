@@ -97,6 +97,19 @@ function ProgramsAndPricing() {
         </p>
       </div>
 
+      <div className="pricing-philosophy">
+        <h3>Our Pricing Philosophy</h3>
+        <p>
+          At the Code School of Guam, we believe in making high-quality coding education accessible to as many people as possible. While similar programs elsewhere often charge upwards of $17,000 to $20,000, we've intentionally set our tuition at <strong>$10,000</strong> for the Live Class. We understand that this is still a significant investment, but we are committed to offering exceptional value.
+        </p>
+        <p>
+          Our program includes small class sizes with a maximum of 10 students per instructor, ensuring personalized attention and a supportive learning environment. We also offer an optional internship, providing real-world experience that sets us apart from other coding bootcamps.
+        </p>
+        <p>
+          We could increase our class sizes or charge higher tuition like other schools, but our priority is your success. By keeping our classes small and our pricing fair, we aim to provide you with the best possible education and the greatest chance of success in the tech industry.
+        </p>
+      </div>
+
       {/* Disclaimer */}
       <div className="price-disclaimer">
         <p>

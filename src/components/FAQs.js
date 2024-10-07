@@ -30,6 +30,11 @@ function FAQs() {
         'Yes! Outstanding graduates may be invited to become paid teaching assistants for future cohorts, providing leadership experience and reinforcing your own learning.',
     },
     {
+      question: 'Why is the tuition set at $10,000?',
+      answer:
+        'We strive to provide high-quality education with personalized attention through small class sizes and offer real-world experience via internships. Our tuition reflects the value and unique opportunities we provide, while remaining more affordable than many comparable programs.',
+    },
+    {
       question: 'Do you offer payment plans?',
       answer:
         'Yes, we offer monthly installment plans during the course duration. We are also working on partnering with local banks for financing options.',

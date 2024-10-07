@@ -183,6 +183,60 @@
   text-align: left;
 }
 
+/* Founder Section */
+.founder-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.founder-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.founder-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Centered CTA Button */
+.cta-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin: 20px auto;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Founder Section */
+.founder {
+  padding: 100px 20px;
+  text-align: center;
+  background-color: #eaeaea;
+  /* Light gray to match site theme */
+}
+
+.founder h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.founder p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
 /* Programs & Pricing Section */
 .programs-pricing {
   padding: 100px 20px;
@@ -241,6 +295,29 @@
   font-size: 1rem;
   color: #999;
   margin-top: 15px;
+}
+
+/* Pricing Philosophy Section */
+.pricing-philosophy {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  margin-top: 30px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.pricing-philosophy h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.pricing-philosophy p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
 /* Curriculum Section */
