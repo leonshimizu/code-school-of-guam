@@ -1,5 +1,6 @@
 // Founder.js
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 function Founder() {
   return (
@@ -51,6 +52,11 @@ function Founder() {
         My mission is to help others realize that a career in software engineering is attainable,
         and I'm here to support them every step of the way. If I can do it, so can you.
       </p>
+
+      {/* Back to Main Page Button */}
+      <div className="back-button-container">
+        <Link to="/" className="back-button">Back to Main Page</Link>
+      </div>
     </section>
   );
 }
