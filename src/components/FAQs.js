@@ -10,6 +10,14 @@ function FAQs() {
         'No prior coding experience is required. Our program starts from the basics and builds up to advanced concepts.',
     },
     {
+      question: 'Do I need to have a Mac to join the program?',
+      answer: (
+        <>
+          While it's not mandatory to have a Mac, we highly recommend it. Using a Mac helps ensure uniformity in the classroom, simplifying setup processes and minimizing technical issues that can arise from different operating systems. This allows you to focus more on learning coding concepts rather than dealing with OS-specific challenges. If you don't have a Mac, you're still welcome to join, but please be aware that some steps and commands may differ slightly.
+        </>
+      ),
+    },
+    {
       question: 'How does the internship work?',
       answer:
         'The internship is an optional 2-month program where you work on real projects in an Agile environment. It enhances your resume and job readiness.',

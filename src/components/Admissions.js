@@ -1,3 +1,4 @@
+// Admissions.js
 import React from 'react';
 
 function Admissions() {
@@ -46,6 +47,23 @@ function Admissions() {
         <li>Genuine interest and commitment to learning</li>
         <li>Ability to attend all scheduled classes</li>
       </ul>
+
+      {/* New Technical Requirements Section */}
+      <div className="technical-requirements">
+        <h3>Technical Requirements</h3>
+        <p>
+          We highly recommend that students use a Mac for the duration of the program. This recommendation is not about one operating system being better than another; it's about ensuring uniformity and simplifying the learning process for everyone.
+        </p>
+        <p>
+          Having all students on the same operating system allows us to streamline the setup process and reduce potential technical issues that can arise from differences between operating systems. This means fewer distractions and a smoother learning experience, allowing you to focus on mastering the coding concepts.
+        </p>
+        <p>
+          For those who do not have a Mac, you are still welcome to join the program. Please be aware that setup steps and certain commands may differ slightly from the rest of the class. Our instructors will do their best to accommodate and assist you, but having a Mac will ensure the most seamless experience.
+        </p>
+        <p>
+          As we progress through our initial cohorts, we will evaluate this recommendation and may adjust our requirements based on the collective experience.
+        </p>
+      </div>
 
       <h3>Payment Options</h3>
       <ul>
