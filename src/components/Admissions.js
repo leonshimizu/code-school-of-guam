@@ -6,7 +6,7 @@ function Admissions() {
     <section id="admissions" className="admissions">
       <h2>Admissions</h2>
       <p>
-        Ready to start your journey with Code School of Guam? Here's how to apply:
+        Ready to start your journey with the Code School of Guam? Here's how to apply:
       </p>
       <ol>
         <li>

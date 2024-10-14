@@ -6,7 +6,7 @@ function About() {
     <section id="about" className="about">
       <h2>About the Code School of Guam</h2>
       <p>
-        Code School of Guam is the island's first coding bootcamp, offering
+        The Code School of Guam is the island's first coding bootcamp, offering
         world-class education in full-stack software development, focusing on
         Ruby on Rails for the backend and React.js for the frontend.
       </p>
@@ -29,7 +29,7 @@ function About() {
 
       <h3>Why Code School of Guam?</h3>
       <p>
-        At Code School of Guam, we prioritize hands-on learning and mentorship.
+        At the Code School of Guam, we prioritize hands-on learning and mentorship.
         Our classes are intentionally kept small (max 10 students per class)
         to ensure personalized attention and support for every student. This
         allows students to build strong relationships with their instructors

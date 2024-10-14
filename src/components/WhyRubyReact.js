@@ -8,7 +8,7 @@ function WhyRubyReact() {
       <div className="container">
         <h2>Why We Teach Ruby on Rails and React.js</h2>
         <p>
-          At Code School of Guam, we've thoughtfully chosen Ruby on Rails and React.js as the cornerstone of our curriculum. Here's why:
+          At the Code School of Guam, we've thoughtfully chosen Ruby on Rails and React.js as the cornerstone of our curriculum. Here's why:
         </p>
 
         <h3>Ruby on Rails: A Powerful Back-End Framework</h3>

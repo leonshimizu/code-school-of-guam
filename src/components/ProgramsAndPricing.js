@@ -91,7 +91,7 @@ function ProgramsAndPricing() {
         <p>
           <strong>
             Comparable coding bootcamps in the U.S. charge between $15,000 and
-            $20,000 for similar programs. Code School of Guam offers an
+            $20,000 for similar programs. The Code School of Guam offers an
             affordable and valuable option to start your career in tech.
           </strong>
         </p>
