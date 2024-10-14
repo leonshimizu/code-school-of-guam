@@ -10,6 +10,14 @@ function FAQs() {
         'No prior coding experience is required. Our program starts from the basics and builds up to advanced concepts.',
     },
     {
+      question: 'Why do you teach Ruby on Rails instead of other programming languages?',
+      answer: (
+        <>
+          We have chosen Ruby on Rails because it's a powerful, beginner-friendly framework that allows for rapid development. It's used by many successful companies like Airbnb, GitHub, and Shopify. Our instructors have professional experience with Rails, ensuring high-quality teaching and real-world insights. Learning Rails provides a strong foundation, making it easier to pick up other languages in the future.
+        </>
+      ),
+    },
+    {
       question: 'Do I need to have a Mac to join the program?',
       answer: (
         <>

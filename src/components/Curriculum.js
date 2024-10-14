@@ -1,4 +1,6 @@
+// Curriculum.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Curriculum() {
   return (
@@ -28,8 +30,7 @@ function Curriculum() {
         <div className="curriculum-item">
           <h3>Core Program</h3>
           <p>
-            In-depth learning of full-stack development using Ruby on Rails and
-            React.js, including:
+            In-depth learning of full-stack development using Ruby on Rails and React.js, including:
           </p>
           <ul>
             <li>Front-end and back-end development</li>
@@ -42,17 +43,25 @@ function Curriculum() {
         <div className="curriculum-item">
           <h3>Capstone Project</h3>
           <p>
-            Build a full-stack application from scratch to showcase your skills
-            to potential employers.
+            Build a full-stack application from scratch to showcase your skills to potential employers.
           </p>
         </div>
         <div className="curriculum-item">
           <h3>Internship (Optional)</h3>
           <p>
-            Apply your skills in a real-world setting with our 2-month
-            internship program.
+            Apply your skills in a real-world setting with our 2-month internship program.
           </p>
         </div>
+      </div>
+
+      {/* New Section to Link to the Why We Teach Ruby on Rails and React.js Page */}
+      <div className="learn-more">
+        <p>
+          Curious why we teach Ruby on Rails and React.js?
+        </p>
+        <Link to="/why-ruby-react" className="cta-button">
+          Learn More
+        </Link>
       </div>
     </section>
   );

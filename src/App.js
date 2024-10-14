@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import necessary routing components
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,14 +13,14 @@ import FAQs from './components/FAQs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Policies from './components/Policies';
-import Founder from './components/Founder'; // Import the Founder component
-import ScrollToTop from './components/ScrollToTop'; // Import the ScrollToTop component
+import Founder from './components/Founder';
+import WhyRubyReact from './components/WhyRubyReact';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 function App() {
   return (
     <Router>
-      {/* ScrollToTop ensures that the page scrolls to the top on route change */}
       <ScrollToTop />
       <div className="App">
         <Header />
@@ -43,6 +43,8 @@ function App() {
               </>
             }
           />
+          {/* New route for the WhyRubyReact page */}
+          <Route path="/why-ruby-react" element={<WhyRubyReact />} />
           {/* Founder page route */}
           <Route path="/founder" element={<Founder />} />
         </Routes>

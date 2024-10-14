@@ -1,3 +1,4 @@
+// Header.js
 import React, { useState } from 'react';
 
 function Header() {
@@ -21,6 +22,7 @@ function Header() {
         </div>
         <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
           <li><a href="/#about" onClick={() => setIsOpen(false)}>About Us</a></li>
+          <li><a href="/#why-ruby-react" onClick={() => setIsOpen(false)}>Why Ruby & React</a></li>
           <li><a href="/#programs-pricing" onClick={() => setIsOpen(false)}>Programs & Pricing</a></li>
           <li><a href="/#curriculum" onClick={() => setIsOpen(false)}>Curriculum</a></li>
           <li><a href="/#internship" onClick={() => setIsOpen(false)}>Internship</a></li>

@@ -106,6 +106,9 @@ function ProgramsAndPricing() {
           Our program includes small class sizes with a maximum of 10 students per instructor, ensuring personalized attention and a supportive learning environment. We also offer an optional internship, providing real-world experience that sets us apart from other coding bootcamps.
         </p>
         <p>
+          Additionally, we've chosen to teach <strong>Ruby on Rails</strong> and <strong>React.js</strong> because they are powerful, in-demand technologies that provide a strong foundation for your future career. Our instructors have professional experience with these tools, allowing us to deliver high-quality instruction and insights from the industry.
+        </p>
+        <p>
           We could increase our class sizes or charge higher tuition like other schools, but our priority is your success. By keeping our classes small and our pricing fair, we aim to provide you with the best possible education and the greatest chance of success in the tech industry.
         </p>
       </div>
