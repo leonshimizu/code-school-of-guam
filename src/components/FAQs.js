@@ -26,6 +26,11 @@ function FAQs() {
       ),
     },
     {
+      question: 'Are the classes held in-person or online?',
+      answer:
+        'All our classes are conducted fully remotely via Zoom. This allows you to participate in live, interactive sessions from anywhere with a reliable internet connection. Our online format provides flexibility and convenience while maintaining a high level of engagement and support.',
+    },
+    {
       question: 'How does the internship work?',
       answer:
         'The internship is an optional 2-month program where you work on real projects in an Agile environment. It enhances your resume and job readiness.',

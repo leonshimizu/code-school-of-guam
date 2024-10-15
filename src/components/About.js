@@ -1,3 +1,4 @@
+// About.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -44,12 +45,12 @@ function About() {
         including full upfront payment with a $1,000 discount or installment plans.
       </p>
 
-      <h3>Class Schedule</h3>
+      <h3>Class Schedule and Format</h3>
       <p>
-        Our current classes are held Monday through Thursday from 6:00 PM to
-        9:00 PM and Saturdays from 8:00 AM to 4:00 PM. This schedule allows
+        Our current classes are held <strong>fully remotely via Zoom</strong>, Monday through Thursday from 6:00 PM to
+        9:00 PM and Saturdays from 8:00 AM to 4:00 PM. This online format allows
         flexibility for those who are working or have other commitments during
-        the day.
+        the day. Join our live, interactive sessions from the comfort of your own home.
       </p>
       <p>
         We are planning to add daytime classes in the future as demand grows.

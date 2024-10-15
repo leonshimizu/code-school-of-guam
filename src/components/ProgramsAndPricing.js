@@ -1,3 +1,4 @@
+// ProgramsAndPricing.js
 import React from 'react';
 
 function ProgramsAndPricing() {
@@ -15,7 +16,7 @@ function ProgramsAndPricing() {
             Saturday (8:00 AM – 4:00 PM)
           </p>
           <p>
-            <strong>Features:</strong> Live instructor-led classes, hands-on
+            <strong>Features:</strong> Live instructor-led classes conducted <strong>remotely via Zoom</strong>, hands-on
             projects, and exercises. Students also get access to recordings for
             one year after the cohort ends.
           </p>
@@ -40,7 +41,7 @@ function ProgramsAndPricing() {
             Saturday (8:00 AM – 4:00 PM)
           </p>
           <p>
-            <strong>Features:</strong> Live instructor-led classes, hands-on
+            <strong>Features:</strong> Live instructor-led classes conducted <strong>remotely via Zoom</strong>, hands-on
             projects, and exercises. Students also get access to recordings for
             one year after the cohort ends.
           </p>
