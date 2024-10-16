@@ -563,7 +563,7 @@ export default function LandingPage() {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="w-full md:w-1/3">
                 <Image
-                  src="/placeholder.svg"
+                  src="/NationalsPic2.jpg"
                   alt="Leon Shimizu"
                   width={300}
                   height={300}
