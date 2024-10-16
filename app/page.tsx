@@ -233,7 +233,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 text-gray-900">About the Code School of Guam</h2>
             <p className="text-lg text-gray-600 text-center mb-8">
-              The Code School of Guam is the island's first coding bootcamp, offering world-class education in full-stack software development, focusing on Ruby on Rails for the backend and React.js for the frontend. Our <span className="font-semibold text-orange-500">fully remote classes</span> make high-quality coding education accessible to everyone, regardless of location.
+              The Code School of Guam is the island&apos;s first coding bootcamp, offering world-class education in full-stack software development, focusing on Ruby on Rails for the backend and React.js for the frontend. Our <span className="font-semibold text-orange-500">fully remote classes</span> make high-quality coding education accessible to everyone, regardless of location.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="hover-lift bg-white">
@@ -251,7 +251,7 @@ export default function LandingPage() {
                     <Users className="mr-2 h-5 w-5 text-orange-500" />
                     Our Vision
                   </h3>
-                  <p className="text-gray-600">We envision transforming Guam into a tech hub by equipping local residents with the skills and real-world experience needed to succeed in the global software industry. By building a pipeline of tech talent, we aim to contribute to the island's economic growth and innovation.</p>
+                  <p className="text-gray-600">We envision transforming Guam into a tech hub by equipping local residents with the skills and real-world experience needed to succeed in the global software industry. By building a pipeline of tech talent, we aim to contribute to the island&apos;s economic growth and innovation.</p>
                 
                 </CardContent>
               </Card>
@@ -298,7 +298,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">Why We Teach Ruby on Rails and React.js</h2>
             <p className="text-lg text-gray-600 text-center mb-8">
-              At the Code School of Guam, we've thoughtfully chosen Ruby on Rails and React.js as the cornerstone of our curriculum. Here's why:
+              At the Code School of Guam, we&apos;ve thoughtfully chosen Ruby on Rails and React.js as the cornerstone of our curriculum. Here&apos;s why:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="hover-lift bg-white">
@@ -385,7 +385,7 @@ export default function LandingPage() {
             <div className="mt-8">
               <h3 className="text-2xl font-bold mb-4 text-center">Our Pricing Philosophy</h3>
               <p className="text-lg text-gray-300 text-center">
-                At the Code School of Guam, we believe in making high-quality coding education accessible. Our tuition reflects our commitment to providing exceptional value through small class sizes, personalized attention, and an optional internship program. While comparable programs often charge $15,000 to $20,000, we've intentionally set our price lower to make our program more accessible to motivated students in Guam and beyond. Our <span className="font-semibold text-orange-500">fully remote format</span> allows us to keep costs down while still delivering a high-quality, interactive learning experience.
+                At the Code School of Guam, we believe in making high-quality coding education accessible. Our tuition reflects our commitment to providing exceptional value through small class sizes, personalized attention, and an optional internship program. While comparable programs often charge $15,000 to $20,000, we&apos;ve intentionally set our price lower to make our program more accessible to motivated students in Guam and beyond. Our <span className="font-semibold text-orange-500">fully remote format</span> allows us to keep costs down while still delivering a high-quality, interactive learning experience.
               </p>
               <p className="text-lg text-gray-300 text-center mt-4">
                 We could increase our class sizes or charge higher tuition like other schools, but our priority is your success. By keeping our classes small and our pricing fair, we aim to provide you with the best possible education and the greatest chance of success in the tech industry.
@@ -494,7 +494,7 @@ export default function LandingPage() {
                   <li>Daily stand-up meetings for progress updates</li>
                 </ul>
                 <p className="text-sm text-gray-600 mt-4">
-                  <em>Participation is optional, and you can choose to leave with a week's notice.</em>
+                  <em>Participation is optional, and you can choose to leave with a week&apos;s notice.</em>
                 </p>
               </CardContent>
             </Card>
@@ -511,7 +511,7 @@ export default function LandingPage() {
               <Card className="hover-lift bg-gray-800">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2 text-white">Resume Building</h3>
-                  <p className="text-gray-300">We'll help you craft a standout tech resume that highlights your new skills and projects.</p>
+                  <p className="text-gray-300">We&apos;ll help you craft a standout tech resume that highlights your new skills and projects.</p>
                 </CardContent>
               </Card>
               <Card className="hover-lift bg-gray-800">
@@ -539,7 +539,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Admissions</h2>
             <p className="text-lg text-gray-600 text-center mb-8">
-              Ready to start your journey with the Code School of Guam? Here's how to apply:
+              Ready to start your journey with the Code School of Guam? Here&apos;s how to apply:
             </p>
             <Card className="hover-lift bg-white">
               <CardContent className="p-6">
@@ -573,7 +573,7 @@ export default function LandingPage() {
               <div className="w-full md:w-2/3">
                 <h3 className="text-2xl font-bold mb-4">Leon Shimizu</h3>
                 <p className="text-gray-300 mb-4">
-                  Hafa Adai! I'm Leon Shimizu, born and raised in Guam. After graduating from Father Duenas Memorial School in 2017, I pursued mechanical engineering and played football at Allegheny College in Pennsylvania. While I wasn't entirely certain of my career path, my passion for math and encouragement from family and friends led me toward engineering.
+                  Hafa Adai! I&apos;m Leon Shimizu, born and raised in Guam. After graduating from Father Duenas Memorial School in 2017, I pursued mechanical engineering and played football at Allegheny College in Pennsylvania. While I wasn&apos;t entirely certain of my career path, my passion for math and encouragement from family and friends led me toward engineering.
                 </p>
                 <p className="text-gray-300 mb-4">
                   After my first year of college, upon learning that I was expecting my first child, I returned to Guam to be with my family and then in 2019, I moved to Las Vegas to pursue new opportunities while still being with family. As the pandemic began, I decided to leave college and enter the workforce full-time. I started as a produce clerk at Vons and later joined an Amazon Fulfillment Center, where I quickly advanced to Process Assistant at the Dock. Although I gained valuable experience in these roles, I realized that I wanted to pursue a more fulfilling, long-term career path.
@@ -582,16 +582,16 @@ export default function LandingPage() {
                   In the summer of 2021, inspired by family members who transitioned into software engineering through coding bootcamps, I decided to explore a career in coding. After extensive research on the best path forward, I enrolled in Actualize Coding Bootcamp, left my job at Amazon, and fully committed to learning software development. While it was challenging, I was determined to succeed.
                 </p>
                 <p className="text-gray-300 mb-4">
-                  Before the bootcamp concluded, I was fortunate to secure a position with Spectrio LLC, where I currently work and over the past few years, I've also had the privilege of giving back to the coding community by working as an instructor and Teaching Assistant at Actualize, and contributing to another company called SkillsEngine. These experiences deepened my passion and knowledge for coding and education in general.
+                  Before the bootcamp concluded, I was fortunate to secure a position with Spectrio LLC, where I currently work and over the past few years, I&apos;ve also had the privilege of giving back to the coding community by working as an instructor and Teaching Assistant at Actualize, and contributing to another company called SkillsEngine. These experiences deepened my passion and knowledge for coding and education in general.
                 </p>
                 <p className="text-gray-300 mb-4">
                   For a couple of years now, my mom encouraged me to start a code school in Guam. I hesitated at first, feeling unsure about my readiness and the challenge of helping others succeed in a competitive industry. However, I realized there is no better time than now to give back to the island that shaped who I am today.
                 </p>
                 <p className="text-gray-300 mb-4">
-                  That's why I started the Code School of Guam. My goal is to provide the same opportunities I was fortunate to receive in the states, right here at home. Also, to further support our students, I founded a software firm where they can intern, work on real projects, and gain practical experience—an essential factor that employers are actively seeking.
+                  That&apos;s why I started the Code School of Guam. My goal is to provide the same opportunities I was fortunate to receive in the states, right here at home. Also, to further support our students, I founded a software firm where they can intern, work on real projects, and gain practical experience—an essential factor that employers are actively seeking.
                 </p>
                 <p className="text-gray-300">
-                  My mission is to help others realize that a career in software engineering is attainable, and I'm here to support them every step of the way. If I can do it, so can you.
+                  My mission is to help others realize that a career in software engineering is attainable, and I&apos;m here to support them every step of the way. If I can do it, so can you.
                 </p>
               </div>
             </div>
@@ -649,7 +649,7 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Contact Us</h2>
             <div className="flex flex-col items-center space-y-4 text-center">
               <p className="text-lg text-gray-600">
-                Have questions? We're here to help! Reach out to us using the contact information below.
+                Have questions? We&apos;re here to help! Reach out to us using the contact information below.
               </p>
               <div className="space-y-2">
                 <p className="text-lg font-semibold flex items-center justify-center text-gray-900">
