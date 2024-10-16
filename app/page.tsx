@@ -661,7 +661,7 @@ export default function LandingPage() {
                   Phone: (671) 483-0219
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-2">
+              {/* <div className="w-full max-w-sm space-y-2">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <Input
                     className="w-full bg-white border-gray-300"
@@ -684,7 +684,7 @@ export default function LandingPage() {
                     Send Message
                   </Button>
                 </form>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
