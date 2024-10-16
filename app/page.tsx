@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { ChevronRight, ChevronDown, Code, Menu, Rocket, BookOpen, Users, Briefcase, GraduationCap, HelpCircle, Mail, Phone, User, CheckCircle, Clock, Calendar, Star } from "lucide-react"
+import { ChevronRight, ChevronDown, Code, Menu, Rocket, BookOpen, Users, Briefcase, GraduationCap, Mail, Phone, CheckCircle, Calendar } from "lucide-react"
 import Link from 'next/link'
 import Image from 'next/image'
 
