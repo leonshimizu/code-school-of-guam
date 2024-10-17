@@ -1,3 +1,4 @@
+// flappy-bird-game.tsx
 'use client'
 
 import React, { useRef, useEffect, useState } from 'react'
@@ -5,13 +6,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 // Constants
-const GRAVITY = 0.15
-const JUMP = -5
+const GRAVITY = 15   // Increased gravity
+const JUMP = -450    // Increased jump force
 const PIPE_WIDTH = 50
-const PIPE_GAP = 300
-const PIPE_SPEED = 2
-const PIPE_FADE_START = 100 // Start fading when pipes are 100px away from the left side
-const INITIAL_BIRD_X_POSITION = 50 // Bird's initial x-position
+const PIPE_GAP = 250 // Decreased pipe gap
+const PIPE_SPEED = 300 // Increased pipe speed
+const PIPE_FADE_START = 100
+const INITIAL_BIRD_X_POSITION = 50
 
 interface Bird {
   x: number
@@ -22,17 +23,16 @@ interface Bird {
 interface Pipe {
   x: number
   top: number
-  opacity?: number // Opacity for fading effect
-  passed?: boolean // Track if the pipe is passed for scoring
+  opacity?: number
+  passed?: boolean
 }
 
 export default function FlappyBirdGame() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const birdRef = useRef<Bird | null>(null)
   const pipesRef = useRef<Pipe[]>([])
-  const frameCountRef = useRef<number>(0)
-  const currentPipeGapRef = useRef<number>(PIPE_GAP)
-  const currentPipeSpeedRef = useRef<number>(PIPE_SPEED)
+  const lastTimeRef = useRef<number>(0)
+  const pipeSpawnTimerRef = useRef<number>(0)
   const animationFrameIdRef = useRef<number>(0)
 
   const [gameStarted, setGameStarted] = useState(false)
@@ -55,9 +55,7 @@ export default function FlappyBirdGame() {
     if (canvas) {
       birdRef.current = { x: INITIAL_BIRD_X_POSITION, y: canvas.height / 2, velocity: 0 }
       pipesRef.current = []
-      currentPipeGapRef.current = PIPE_GAP
-      currentPipeSpeedRef.current = PIPE_SPEED
-      frameCountRef.current = 0
+      pipeSpawnTimerRef.current = 0
       setScore(0)
     }
   }
@@ -66,9 +64,11 @@ export default function FlappyBirdGame() {
   const startGame = () => {
     if (!gameStartedRef.current) {
       setGameStarted(true)
+      gameStartedRef.current = true
       setStartTextVisible(false)
       resetGame()
       generatePipe()
+      lastTimeRef.current = performance.now()
     }
     if (birdRef.current) {
       birdRef.current.velocity = JUMP
@@ -94,7 +94,7 @@ export default function FlappyBirdGame() {
     const canvas = canvasRef.current
     if (canvas) {
       const minHeight = 50
-      const maxHeight = canvas.height - currentPipeGapRef.current - minHeight
+      const maxHeight = canvas.height - PIPE_GAP - minHeight
       const height = Math.random() * (maxHeight - minHeight) + minHeight
       pipesRef.current.push({ x: canvas.width, top: height, opacity: 1 })
     }
@@ -130,12 +130,15 @@ export default function FlappyBirdGame() {
     startGame()
 
     // Game loop
-    const gameLoop = () => {
+    const gameLoop = (time: number) => {
+      const deltaTime = (time - lastTimeRef.current) / 1000 // Convert to seconds
+      lastTimeRef.current = time
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       if (gameStartedRef.current) {
-        updateGame()
-        drawPipes(ctx, canvas)
+        updateGame(deltaTime)
+        drawPipes(ctx)
         drawBird(ctx)
       } else {
         // Draw the bird at its starting position
@@ -145,7 +148,7 @@ export default function FlappyBirdGame() {
       animationFrameIdRef.current = requestAnimationFrame(gameLoop)
     }
 
-    gameLoop()
+    animationFrameIdRef.current = requestAnimationFrame(gameLoop)
 
     return () => {
       // Cleanup
@@ -156,32 +159,26 @@ export default function FlappyBirdGame() {
   }, []) // Empty dependency array to run only once
 
   // Update the game state
-  const updateGame = () => {
+  const updateGame = (deltaTime: number) => {
     const canvas = canvasRef.current
     if (canvas) {
-      updateBird(canvas)
-      updatePipes(canvas)
+      updateBird(canvas, deltaTime)
+      updatePipes(canvas, deltaTime)
 
-      // Generate pipes periodically
-      frameCountRef.current++
-      if (frameCountRef.current % 200 === 0) {
+      // Generate pipes periodically based on time
+      pipeSpawnTimerRef.current += deltaTime
+      if (pipeSpawnTimerRef.current >= 1.5) { // Spawn a pipe every 1.5 seconds
         generatePipe()
+        pipeSpawnTimerRef.current = 0
       }
     }
   }
 
   // Update the bird's position and velocity
-  const updateBird = (canvas: HTMLCanvasElement) => {
+  const updateBird = (canvas: HTMLCanvasElement, deltaTime: number) => {
     if (birdRef.current) {
-      birdRef.current.velocity += GRAVITY
-      birdRef.current.y += birdRef.current.velocity
-
-      // Apply easing to the bird's movement
-      if (birdRef.current.velocity > 0) {
-        birdRef.current.velocity *= 0.98 // Slightly reduce velocity for smoother fall
-      } else {
-        birdRef.current.velocity *= 0.95 // Slightly reduce upward velocity for smoother jumps
-      }
+      birdRef.current.velocity += GRAVITY * deltaTime * 100 // Multiply by 100 to scale gravity appropriately
+      birdRef.current.y += birdRef.current.velocity * deltaTime
 
       // Bird collision with boundaries
       if (birdRef.current.y >= canvas.height - 20 || birdRef.current.y <= 0) {
@@ -191,12 +188,9 @@ export default function FlappyBirdGame() {
   }
 
   // Update the position of the pipes and check for collisions
-  const updatePipes = (canvas: HTMLCanvasElement) => {
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
+  const updatePipes = (canvas: HTMLCanvasElement, deltaTime: number) => {
     pipesRef.current.forEach((pipe, index) => {
-      pipe.x -= currentPipeSpeedRef.current
+      pipe.x -= PIPE_SPEED * deltaTime
 
       // Check if the bird passed a pipe and update the score
       if (birdRef.current && pipe.x + PIPE_WIDTH < birdRef.current.x && !pipe.passed) {
@@ -206,8 +200,9 @@ export default function FlappyBirdGame() {
 
           // Increase difficulty every 5 points
           if (newScore % 5 === 0) {
-            currentPipeSpeedRef.current += 0.5 // Increase pipe speed
-            currentPipeGapRef.current = Math.max(150, currentPipeGapRef.current - 10) // Decrease pipe gap
+            // Optionally increase pipe speed or decrease gap
+            // PIPE_SPEED += 20
+            // PIPE_GAP = Math.max(150, PIPE_GAP - 10)
           }
 
           return newScore
@@ -219,7 +214,7 @@ export default function FlappyBirdGame() {
         birdRef.current &&
         pipe.x < birdRef.current.x + 20 &&
         pipe.x + PIPE_WIDTH > birdRef.current.x &&
-        (birdRef.current.y < pipe.top || birdRef.current.y > pipe.top + currentPipeGapRef.current)
+        (birdRef.current.y < pipe.top || birdRef.current.y > pipe.top + PIPE_GAP)
       ) {
         gameOver()
       }
@@ -234,6 +229,7 @@ export default function FlappyBirdGame() {
   // Handle game over state
   const gameOver = () => {
     setGameStarted(false)
+    gameStartedRef.current = false
     setGameOverTextVisible(true)
     if (score > highScore) {
       setHighScore(score)
@@ -253,7 +249,9 @@ export default function FlappyBirdGame() {
   }
 
   // Draw the pipes on the canvas
-  const drawPipes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
+  const drawPipes = (ctx: CanvasRenderingContext2D) => {
+    const canvas = canvasRef.current
+    if (!canvas) return
     pipesRef.current.forEach((pipe) => {
       // Fade out pipe as it approaches the left side
       if (pipe.x < PIPE_FADE_START) {
@@ -268,9 +266,9 @@ export default function FlappyBirdGame() {
       // Draw bottom pipe
       ctx.fillRect(
         pipe.x,
-        pipe.top + currentPipeGapRef.current,
+        pipe.top + PIPE_GAP,
         PIPE_WIDTH,
-        canvas.height - pipe.top - currentPipeGapRef.current
+        canvas.height - pipe.top - PIPE_GAP
       )
       ctx.globalAlpha = 1 // Reset opacity after drawing
     })
