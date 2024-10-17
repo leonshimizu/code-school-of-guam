@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ChevronRight, ChevronDown, Code, Menu, Rocket, BookOpen, Users, Briefcase, GraduationCap, Mail, Phone, CheckCircle, Calendar, GamepadIcon } from "lucide-react"
 import Link from 'next/link'
 import Image from 'next/image'
+import emailjs from '@emailjs/browser';
 
 export default function LandingPage() {
   const [email, setEmail] = useState("")
@@ -37,9 +38,30 @@ export default function LandingPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Submitted email:", email)
-    setEmail("")
+  
+    emailjs
+      .send(
+        "service_jt2foj7",
+        "template_un3f26f",
+        {
+          from_name: email,
+          message: "New subscriber to your email list!", // Custom message for subscription
+        },
+        "-4iZEmtDtCvBEn4gX"
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text)
+          alert("Subscription successful!")
+          setEmail("") // Clear the email input
+        },
+        (err) => {
+          console.log("FAILED...", err)
+          alert("Subscription failed. Please try again.")
+        }
+      )
   }
+  
 
   const navItems = [
     { href: "#about", label: "About Us" },
@@ -199,7 +221,7 @@ export default function LandingPage() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 lg:py-48 bg-gray-900 overflow-hidden">
+      <section className="relative w-full py-20 md:py-32 lg:py-48 bg-gray-900 overflow-hidden">
           <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div className={`flex flex-col items-center space-y-4 text-center ${isVisible ? 'fade-in' : ''}`}>
