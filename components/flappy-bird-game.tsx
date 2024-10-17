@@ -42,6 +42,17 @@ export default function FlappyBirdGame() {
     const ctx = canvas?.getContext('2d')
     if (!canvas || !ctx) return
 
+    // Dynamically adjust canvas size based on screen width (for mobile support)
+    const resizeCanvas = () => {
+      const canvasWidth = Math.min(window.innerWidth - 20, 400) // Make sure it's responsive on mobile
+      const canvasHeight = canvasWidth * 1.5 // Maintain the same aspect ratio
+      canvas.width = canvasWidth
+      canvas.height = canvasHeight
+    }
+
+    // Call resizeCanvas initially to set the right dimensions
+    resizeCanvas()
+
     let animationFrameId: number
     let bird: Bird = { x: INITIAL_BIRD_X_POSITION, y: canvas.height / 2, velocity: 0 }
     let pipes: Pipe[] = []
@@ -194,14 +205,20 @@ export default function FlappyBirdGame() {
       }
     }
 
+    // Add event listeners for both desktop and mobile (touchstart)
     canvas.addEventListener('click', handleClick)
+    canvas.addEventListener('touchstart', handleClick) // For mobile
     window.addEventListener('keydown', handleSpacebar) // Listen for spacebar press
+    window.addEventListener('resize', resizeCanvas) // Adjust canvas on window resize
+
     gameLoop()
 
     return () => {
       cancelAnimationFrame(animationFrameId)
       canvas.removeEventListener('click', handleClick)
+      canvas.removeEventListener('touchstart', handleClick) // Clean up touch event listener
       window.removeEventListener('keydown', handleSpacebar) // Clean up the event listener
+      window.removeEventListener('resize', resizeCanvas) // Clean up resize listener
     }
   }, [gameStarted, score, highScore])
 
@@ -214,13 +231,11 @@ export default function FlappyBirdGame() {
         <CardContent>
           <canvas
             ref={canvasRef}
-            width={400}
-            height={600}
-            className="border border-gray-700 rounded-md"
+            className="border border-gray-700 rounded-md w-full"
           />
           {startTextVisible && (
             <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white animate-fadeIn">
-              Click or Press Space to Start
+              Tap or Press Space to Start
             </div>
           )}
           {gameOverTextVisible && (
