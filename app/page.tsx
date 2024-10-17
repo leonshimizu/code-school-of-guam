@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { ChevronRight, ChevronDown, Code, Menu, Rocket, BookOpen, Users, Briefcase, GraduationCap, Mail, Phone, CheckCircle, Calendar } from "lucide-react"
+import { ChevronRight, ChevronDown, Code, Menu, Rocket, BookOpen, Users, Briefcase, GraduationCap, Mail, Phone, CheckCircle, Calendar, GamepadIcon } from "lucide-react"
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -45,6 +45,7 @@ export default function LandingPage() {
     { href: "#about", label: "About Us" },
     { href: "#why-choose-us", label: "Why Choose Us" },
     { href: "#why-ruby-react", label: "Why Ruby & React" },
+    { href: "#flappy-bird-demo", label: "Flappy Bird Demo" },
     { href: "#programs", label: "Programs & Pricing" },
     { href: "#curriculum", label: "Curriculum" },
     { href: "#timeline", label: "Timeline" },
@@ -251,8 +252,7 @@ export default function LandingPage() {
                     <Users className="mr-2 h-5 w-5 text-orange-500" />
                     Our Vision
                   </h3>
-                  <p className="text-gray-600">We envision transforming Guam into a tech hub by equipping local residents with the skills and real-world experience needed to succeed in the global software industry. By building a pipeline of tech talent, we aim to contribute to the island&apos;s economic growth and innovation.</p>
-                
+                  <p className="text-gray-600">We envision transforming Guam into a tech  hub by equipping local residents with the skills and real-world experience needed to succeed in the global software industry. By building a pipeline of tech talent, we aim to contribute to the island&apos;s economic growth and innovation.</p>
                 </CardContent>
               </Card>
             </div>
@@ -339,20 +339,35 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="programs" className="w-full py-12 md:py-24 lg:py-32 bg-gray-900 text-white relative overflow-hidden">
+        <section id="flappy-bird-demo" className="w-full py-12 md:py-24 lg:py-32 bg-gray-900 text-white relative overflow-hidden">
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">Experience Coding in Action</h2>
+              <p className="text-lg text-gray-300 mb-8">
+                Want to see what you can create with the skills you&apos;ll learn? Try our Flappy Bird clone, built with React and HTML5 Canvas!
+              </p>
+              <Link href="/flappy-bird" className="inline-flex h-10 items-center justify-center rounded-md bg-orange-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-orange-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover-lift">
+                <GamepadIcon className="mr-2 h-4 w-4" />
+                Play Flappy Bird
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section id="programs" className="w-full py-12 md:py-24 lg:py-32 bg-white text-gray-900 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">Our Programs & Tuition</h2>
-            <p className="text-lg text-gray-300 text-center mb-8">
+            <p className="text-lg text-gray-600 text-center mb-8">
               We offer two comprehensive programs to suit different learning styles and schedules:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card className="hover-lift bg-gray-800">
+              <Card className="hover-lift bg-gray-100">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
                     <BookOpen className="mr-2 h-5 w-5 text-orange-500" />
                     Live Class (Synchronous Learning)
                   </h3>
-                  <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
+                  <ul className="list-disc list-inside space-y-2 text-gray-600 mb-4">
                     <li>4-month program (20-25 hours/week)</li>
                     <li>Monday – Thursday (6:00 PM – 9:00 PM), Saturday (8:00 AM – 4:00 PM)</li>
                     <li><span className="font-semibold text-orange-500">Fully remote</span> live instructor-led classes via Zoom</li>
@@ -360,41 +375,41 @@ export default function LandingPage() {
                     <li>Access to recordings for one year after the cohort ends</li>
                     <li>Career support</li>
                   </ul>
-                  <p className="font-bold text-white">Tuition: $10,000</p>
-                  <p className="text-sm text-gray-400 mt-2">Payment options: Full upfront payment with $1,000 discount, or four monthly installments</p>
+                  <p className="font-bold text-gray-900">Tuition: $10,000</p>
+                  <p className="text-sm text-gray-600 mt-2">Payment options: Full upfront payment with $1,000 discount, or four monthly installments</p>
                 </CardContent>
               </Card>
-              <Card className="hover-lift bg-gray-800">
+              <Card className="hover-lift bg-gray-100">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
                     <BookOpen className="mr-2 h-5 w-5 text-orange-500" />
                     Self-Paced Program (Asynchronous Learning)
                   </h3>
-                  <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
+                  <ul className="list-disc list-inside space-y-2 text-gray-600 mb-4">
                     <li>6-month program</li>
                     <li>Access to recorded lessons</li>
                     <li>Mandatory weekly 1-hour instructor meetings</li>
                     <li>Weekly project submissions</li>
                     <li>Feedback and guidance throughout the program</li>
                   </ul>
-                  <p className="font-bold text-white">Tuition: $12,000</p>
-                  <p className="text-sm text-gray-400 mt-2">Coming soon after our initial cohorts</p>
+                  <p className="font-bold text-gray-900">Tuition: $12,000</p>
+                  <p className="text-sm text-gray-600 mt-2">Coming soon after our initial cohorts</p>
                 </CardContent>
               </Card>
             </div>
             <div className="mt-8">
               <h3 className="text-2xl font-bold mb-4 text-center">Our Pricing Philosophy</h3>
-              <p className="text-lg text-gray-300 text-center">
+              <p className="text-lg text-gray-600 text-center">
                 At the Code School of Guam, we believe in making high-quality coding education accessible. Our tuition reflects our commitment to providing exceptional value through small class sizes, personalized attention, and an optional internship program. While comparable programs often charge $15,000 to $20,000, we&apos;ve intentionally set our price lower to make our program more accessible to motivated students in Guam and beyond. Our <span className="font-semibold text-orange-500">fully remote format</span> allows us to keep costs down while still delivering a high-quality, interactive learning experience.
               </p>
-              <p className="text-lg text-gray-300 text-center mt-4">
+              <p className="text-lg text-gray-600 text-center mt-4">
                 We could increase our class sizes or charge higher tuition like other schools, but our priority is your success. By keeping our classes small and our pricing fair, we aim to provide you with the best possible education and the greatest chance of success in the tech industry.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="curriculum" className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+        <section id="curriculum" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Our Curriculum</h2>
             <p className="text-lg text-gray-600 text-center mb-8">
@@ -473,57 +488,80 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="internship" className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+        <section id="internship" className="w-full py-12 md:py-24 lg:py-32 bg-white text-gray-900 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Internship Program</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">Internship Program</h2>
             <p className="text-lg text-gray-600 text-center mb-8">
-              After completing the course, you have the option to join our 2-month unpaid internship to gain real-world experience, all while working <span className="font-semibold text-orange-500">remotely</span>.
+              Our optional 2-month internship program provides you with real-world experience, setting you apart in the job market.
             </p>
-            <Card className="hover-lift bg-white">
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
-                  <Briefcase className="mr-2 h-5 w-5 text-orange-500" />
-                  Internship Details
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
-                  <li>Work on real applications for our software firm</li>
-                  <li>Apply your skills in an Agile work environment</li>
-                  <li>Onboarding week to set up and familiarize with the project</li>
-                  <li>Weekly sprints with tasks assigned based on your estimates</li>
-                  <li>Sprint planning and retrospective meetings</li>
-                  <li>Daily stand-up meetings for progress updates</li>
-                </ul>
-                <p className="text-sm text-gray-600 mt-4">
-                  <em>Participation is optional, and you can choose to leave with a week&apos;s notice.</em>
-                </p>
-              </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="hover-lift bg-gray-100">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
+                    <Briefcase className="mr-2 h-5 w-5 text-orange-500" />
+                    Internship Details
+                  </h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-600">
+                    <li>2-month duration</li>
+                    <li>Work on real applications for our software firm</li>
+                    <li>Apply your skills in an Agile work environment</li>
+                    <li>Onboarding week to set up and familiarize with the project</li>
+                    <li>Weekly sprints with tasks assigned based on your estimates</li>
+                    <li>Sprint planning and retrospective meetings</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card className="hover-lift bg-gray-100">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
+                    <CheckCircle className="mr-2 h-5 w-5 text-orange-500" />
+                    Benefits of the Internship
+                  </h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-600">
+                    <li>Apply your skills in a professional setting</li>
+                    <li>Build a network within the tech industry</li>
+                    <li>Understand the software development lifecycle</li>
+                    <li>Improve your teamwork and communication skills</li>
+                    <li>Potential for job offers from partner companies</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 
-        <section id="career" className="w-full py-12 md:py-24 lg:py-32 bg-gray-900 text-white relative overflow-hidden">
+        <section id="career" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">Career Services</h2>
-            <p className="text-lg text-gray-300 text-center mb-8">
-              Our commitment to your success extends beyond the classroom. We offer comprehensive career services to help you launch your tech career, all delivered <span className="font-semibold text-orange-500">remotely</span>.
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Career Services</h2>
+            <p className="text-lg text-gray-600 text-center mb-8">
+            Our commitment to your success extends beyond the classroom. We offer comprehensive career services to help you launch your tech career, all delivered <span className="font-semibold text-orange-500">remotely</span>. Our career services include:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="hover-lift bg-gray-800">
+              <Card className="hover-lift bg-white">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white">Resume Building</h3>
-                  <p className="text-gray-300">We&apos;ll help you craft a standout tech resume that highlights your new skills and projects.</p>
+                  <h3 className="text-xl font-bold mb-2 flex items-center text-gray-900">
+                    <Briefcase className="mr-2 h-5 w-5 text-orange-500" />
+                    Resume Building
+                  </h3>
+                  <p className="text-gray-600">Learn how to craft a compelling tech resume that highlights your new skills and projects.</p>
                 </CardContent>
               </Card>
-              <Card className="hover-lift bg-gray-800">
+              <Card className="hover-lift bg-white">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white">Interview Prep</h3>
-                  <p className="text-gray-300">Practice technical interviews and receive feedback to boost your confidence.</p>
+                  <h3 className="text-xl font-bold mb-2 flex items-center text-gray-900">
+                    <Users className="mr-2 h-5 w-5 text-orange-500" />
+                    Interview Preparation
+                  </h3>
+                  <p className="text-gray-600">Practice technical interviews and receive feedback to improve your performance.</p>
                 </CardContent>
               </Card>
-              <Card className="hover-lift bg-gray-800">
+              <Card className="hover-lift bg-white">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white">Job Search Strategy</h3>
-                  <p className="text-gray-300">Learn effective job search techniques and tap into our network of hiring partners.</p>
+                  <h3 className="text-xl font-bold mb-2 flex items-center text-gray-900">
+                    <Rocket className="mr-2 h-5 w-5 text-orange-500" />
+                    Job Search Strategies
+                  </h3>
+                  <p className="text-gray-600">Learn effective strategies for finding and applying to tech jobs, both locally and remotely.</p>
                 </CardContent>
               </Card>
             </div>
@@ -535,32 +573,58 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="admissions" className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+        <section id="admissions" className="w-full py-12 md:py-24 lg:py-32 bg-gray-900 text-white relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Admissions</h2>
-            <p className="text-lg text-gray-600 text-center mb-8">
-              Ready to start your journey with the Code School of Guam? Here&apos;s how to apply:
-            </p>
-            <Card className="hover-lift bg-white">
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
-                  <GraduationCap className="mr-2 h-5 w-5 text-orange-500" />
-                  Admission Process
-                </h3>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
-                  <li>Fill out our online application form.</li>
-                  <li>Receive an email confirmation with next steps, including scheduling an interview with our admissions team.</li>
-                  <li>Secure your spot by completing the enrollment agreement and submitting your non-refundable tuition deposit.</li>
-                </ol>
-              </CardContent>
-            </Card>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">Admissions Process</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="hover-lift bg-gray-800">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
+                    <CheckCircle className="mr-2 h-5 w-5 text-orange-500" />
+                    Application Steps
+                  </h3>
+                  <ol className="list-decimal list-inside space-y-2 text-gray-300">
+                    <li>Submit online application</li>
+                    <li>Participate in a video interview</li>
+                    <li>Pay deposit to secure your spot</li>
+                    <li>Begin pre-work</li>
+                  </ol>
+                </CardContent>
+              </Card>
+              <Card className="hover-lift bg-gray-800">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-white">
+                    <CheckCircle className="mr-2 h-5 w-5 text-orange-500" />
+                    What We Look For
+                  </h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-300">
+                    <li>Passion for technology and problem-solving</li>
+                    <li>Strong work ethic and ability to commit to an intensive program</li>
+                    <li>Basic computer skills and familiarity with technology</li>
+                    <li>Ability to work collaboratively in a team environment</li>
+                    <li>Resilience and willingness to learn from mistakes</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="mt-12 text-center">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSc84Vee53gbVhwamS77qvizzV8vGri4Ms83kIEzqgN6vg7wZA/viewform?vc=0&c=0&w=1&flr=0"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-orange-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-orange-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover-lift"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Apply Now
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
           </div>
         </section>
 
         <section id="founder" className="w-full py-12 md:py-24 lg:py-32 bg-gray-900 text-white relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">About the Founder</h2>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
               <div className="w-full md:w-1/3">
                 <Image
                   src="/NationalsPic2.jpg"
@@ -598,13 +662,13 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="faq" className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+        <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
                   <AccordionContent>{faq.answer}</AccordionContent>
                 </AccordionItem>
               ))}
@@ -641,66 +705,128 @@ export default function LandingPage() {
                 </CardContent>
               </Card>
             </div>
+            <div className="mt-8 text-center">
+              <a href="https://docs.google.com/document/d/1d8J1ctT7iN_WoMdTpJYdM-2ngJY9UsWtVlVzhVou90Q/edit?usp=sharing" className="text-orange-500 hover:underline" target="_blank"
+              rel="noopener noreferrer">
+                View Full Policies
+              </a>
+            </div>
           </div>
         </section>
 
-        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-white relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 text-gray-900">Contact Us</h2>
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <p className="text-lg text-gray-600">
-                Have questions? We&apos;re here to help! Reach out to us using the contact information below.
-              </p>
-              <div className="space-y-2">
-                <p className="text-lg font-semibold flex items-center justify-center text-gray-900">
-                  <Mail className="mr-2 h-4 w-4 text-orange-500" />
-                  Email: codeschoolofguam@gmail.com
-                </p>
-                <p className="text-lg font-semibold flex items-center justify-center text-gray-900">
-                  <Phone className="mr-2 h-4 w-4 text-orange-500" />
-                  Phone: (671) 483-0219
-                </p>
-              </div>
-              {/* <div className="w-full max-w-sm space-y-2">
-                <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="hover-lift bg-gray-100">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
+                    <Mail className="mr-2 h-5 w-5 text-orange-500" />
+                    Email Us
+                  </h3>
+                  <p className="text-gray-600 mb-4">Have questions? We&apos;re here to help!</p>
+                  <a href="mailto:codeschoolofguam@gmail.com" className="text-orange-500 hover:underline">
+                    codeschoolofguam@gmail.com
+                  </a>
+                </CardContent>
+              </Card>
+              <Card className="hover-lift bg-gray-100">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-4 flex items-center text-gray-900">
+                    <Phone className="mr-2 h-5 w-5 text-orange-500" />
+                    Call Us
+                  </h3>
+                  <p className="text-gray-600 mb-4">We&apos;re available Monday-Saturday, 9am-5pm ChST</p>
+                  <a href="tel:+1674830219" className="text-orange-500 hover:underline">
+                    +1 (671) 483-0219
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold mb-4 text-center text-gray-900">Stay Updated</h3>
+              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                <div className="flex gap-2">
                   <Input
-                    className="w-full bg-white border-gray-300"
-                    placeholder="Your Name"
-                    type="text"
-                    required
-                  />
-                  <Input
-                    className="w-full bg-white border-gray-300"
-                    placeholder="Your Email"
                     type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <textarea
-                    className="w-full min-h-[100px] rounded-md border border-gray-300 p-2 bg-white"
-                    placeholder="Your Message"
-                    required
-                  ></textarea>
-                  <Button type="submit" className="w-full bg-orange-600 text-white hover:bg-orange-700 hover-lift">
-                    Send Message
-                  </Button>
-                </form>
-              </div> */}
+                  <Button type="submit">Subscribe</Button>
+                </div>
+              </form>
             </div>
           </div>
         </section>
       </main>
       <footer className="w-full py-6 bg-gray-900 text-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-xs">©️ 2024 Code School of Guam. All rights reserved.</p>
-            <nav className="flex gap-4 sm:gap-6 mt-4 sm:mt-0">
-              <Link className="text-xs hover:underline underline-offset-4" href="#">
-                Terms of Service
-              </Link>
-              <Link className="text-xs hover:underline underline-offset-4" href="#">
-                Privacy Policy
-              </Link>
-            </nav>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Code School of Guam</h3>
+              <p className="text-sm text-gray-400">Empowering Guam&apos;s tech future, one line of code at a time.</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+              <ul className="space-y-1">
+                {navItems.map((item, index) => (
+                  <li key={index}>
+                    <a href={item.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Connect With Us</h3>
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.instagram.com/codeschoolofguam?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  className="text-gray-400 hover:text-white transition-colors"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/profile.php?id=61566511371763&mibextid=LQQJ4d"
+                  className="text-gray-400 hover:text-white transition-colors"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-gray-800 pt-6 text-center">
+            <p className="text-sm text-gray-400">© 2024 Code School of Guam. All rights reserved.</p>
           </div>
         </div>
       </footer>
