@@ -11,7 +11,7 @@ const PIPE_WIDTH = 50
 const PIPE_GAP = 300
 const PIPE_SPEED = 2
 const PIPE_FADE_START = 100 // Start fading when pipes are 100px away from the left side
-const INITIAL_BIRD_X_POSITION = 50 // Bird's initial x-position (starts in the middle)
+const INITIAL_BIRD_X_POSITION = 50 // Bird's initial x-position
 
 interface Bird {
   x: number
@@ -22,24 +22,32 @@ interface Bird {
 interface Pipe {
   x: number
   top: number
-  opacity?: number // Added opacity for fading
+  opacity?: number // Opacity for fading effect
   passed?: boolean // Track if the pipe is passed for scoring
 }
 
 export default function FlappyBirdGame() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const birdRef = useRef<Bird | null>(null)
+  const pipesRef = useRef<Pipe[]>([])
+  const frameCountRef = useRef<number>(0)
+  const currentPipeGapRef = useRef<number>(PIPE_GAP)
+  const currentPipeSpeedRef = useRef<number>(PIPE_SPEED)
+  const animationFrameIdRef = useRef<number>(0)
+
   const [gameStarted, setGameStarted] = useState(false)
   const [gameOverTextVisible, setGameOverTextVisible] = useState(false)
   const [startTextVisible, setStartTextVisible] = useState(true)
   const [score, setScore] = useState(0)
   const [highScore, setHighScore] = useState(0)
 
-  // Game variables stored in refs
-  const birdRef = useRef<Bird | null>(null)
-  const pipesRef = useRef<Pipe[]>([])
-  const frameCountRef = useRef<number>(0)
-  const currentPipeGapRef = useRef<number>(PIPE_GAP)
-  const currentPipeSpeedRef = useRef<number>(PIPE_SPEED)
+  // Ref to hold the latest value of gameStarted
+  const gameStartedRef = useRef<boolean>(gameStarted)
+
+  // Update the gameStartedRef whenever gameStarted changes
+  useEffect(() => {
+    gameStartedRef.current = gameStarted
+  }, [gameStarted])
 
   // Reset the game to its initial state
   const resetGame = () => {
@@ -49,8 +57,35 @@ export default function FlappyBirdGame() {
       pipesRef.current = []
       currentPipeGapRef.current = PIPE_GAP
       currentPipeSpeedRef.current = PIPE_SPEED
-      setScore(0)
       frameCountRef.current = 0
+      setScore(0)
+    }
+  }
+
+  // Start the game
+  const startGame = () => {
+    if (!gameStartedRef.current) {
+      setGameStarted(true)
+      setStartTextVisible(false)
+      resetGame()
+      generatePipe()
+    }
+    if (birdRef.current) {
+      birdRef.current.velocity = JUMP
+    }
+  }
+
+  // Handle click or touch events
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
+    startGame()
+  }
+
+  // Handle spacebar press
+  const handleSpacebar = (e: KeyboardEvent) => {
+    if (e.code === 'Space') {
+      e.preventDefault() // Prevent the page from scrolling down
+      startGame()
     }
   }
 
@@ -65,33 +100,74 @@ export default function FlappyBirdGame() {
     }
   }
 
-  // Draw the bird on the canvas
-  const drawBird = (ctx: CanvasRenderingContext2D) => {
-    if (birdRef.current) {
-      ctx.fillStyle = '#FFA500'
-      ctx.beginPath()
-      ctx.arc(birdRef.current.x, birdRef.current.y, 20, 0, 2 * Math.PI)
-      ctx.fill()
-    }
-  }
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    if (!canvas || !ctx) return
 
-  // Draw the pipes on the canvas
-  const drawPipes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
-    pipesRef.current.forEach((pipe) => {
-      // Fade out pipe as it approaches the left side
-      if (pipe.x < PIPE_FADE_START) {
-        pipe.opacity = Math.max(0, pipe.x / PIPE_FADE_START) // Reduce opacity gradually
+    // Dynamically adjust canvas size based on screen width (for mobile support)
+    const resizeCanvas = () => {
+      const canvasWidth = Math.min(window.innerWidth - 20, 400) // Responsive width
+      const canvasHeight = canvasWidth * 1.5 // Maintain aspect ratio
+      canvas.width = canvasWidth
+      canvas.height = canvasHeight
+
+      // Reset bird position
+      if (birdRef.current) {
+        birdRef.current.x = INITIAL_BIRD_X_POSITION
+        birdRef.current.y = canvas.height / 2
+      }
+    }
+
+    // Call resizeCanvas initially to set the right dimensions
+    resizeCanvas()
+    // Add event listener for resizing
+    window.addEventListener('resize', resizeCanvas)
+    // Add event listener for keydown
+    window.addEventListener('keydown', handleSpacebar)
+
+    // Start the game automatically on page load
+    startGame()
+
+    // Game loop
+    const gameLoop = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      if (gameStartedRef.current) {
+        updateGame()
+        drawPipes(ctx, canvas)
+        drawBird(ctx)
+      } else {
+        // Draw the bird at its starting position
+        drawBird(ctx)
       }
 
-      ctx.globalAlpha = pipe.opacity || 1 // Apply opacity
-      ctx.fillStyle = '#4CAF50'
+      animationFrameIdRef.current = requestAnimationFrame(gameLoop)
+    }
 
-      // Draw top pipe
-      ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.top)
-      // Draw bottom pipe
-      ctx.fillRect(pipe.x, pipe.top + currentPipeGapRef.current, PIPE_WIDTH, canvas.height - pipe.top - currentPipeGapRef.current)
-      ctx.globalAlpha = 1 // Reset opacity after drawing
-    })
+    gameLoop()
+
+    return () => {
+      // Cleanup
+      cancelAnimationFrame(animationFrameIdRef.current)
+      window.removeEventListener('resize', resizeCanvas)
+      window.removeEventListener('keydown', handleSpacebar)
+    }
+  }, []) // Empty dependency array to run only once
+
+  // Update the game state
+  const updateGame = () => {
+    const canvas = canvasRef.current
+    if (canvas) {
+      updateBird(canvas)
+      updatePipes(canvas)
+
+      // Generate pipes periodically
+      frameCountRef.current++
+      if (frameCountRef.current % 200 === 0) {
+        generatePipe()
+      }
+    }
   }
 
   // Update the bird's position and velocity
@@ -128,7 +204,7 @@ export default function FlappyBirdGame() {
           // Increase difficulty every 5 points
           if (newScore % 5 === 0) {
             currentPipeSpeedRef.current += 0.5 // Increase pipe speed
-            currentPipeGapRef.current = Math.max(150, currentPipeGapRef.current - 10) // Decrease pipe gap but not below 150px
+            currentPipeGapRef.current = Math.max(150, currentPipeGapRef.current - 10) // Decrease pipe gap
           }
 
           return newScore
@@ -152,21 +228,6 @@ export default function FlappyBirdGame() {
     })
   }
 
-  // Update the game state
-  const updateGame = () => {
-    const canvas = canvasRef.current
-    if (canvas) {
-      updateBird(canvas)
-      updatePipes(canvas)
-
-      // Generate pipes periodically
-      frameCountRef.current++
-      if (frameCountRef.current % 200 === 0) {
-        generatePipe()
-      }
-    }
-  }
-
   // Handle game over state
   const gameOver = () => {
     setGameStarted(false)
@@ -178,87 +239,39 @@ export default function FlappyBirdGame() {
     resetGame()
   }
 
-  // Start the game
-  const startGame = () => {
-    if (!gameStarted) {
-      setGameStarted(true)
-      setStartTextVisible(false) // Hide start text
-      resetGame()
-      generatePipe()
-    }
+  // Draw the bird on the canvas
+  const drawBird = (ctx: CanvasRenderingContext2D) => {
     if (birdRef.current) {
-      birdRef.current.velocity = JUMP
+      ctx.fillStyle = '#FFA500'
+      ctx.beginPath()
+      ctx.arc(birdRef.current.x, birdRef.current.y, 20, 0, 2 * Math.PI)
+      ctx.fill()
     }
   }
 
-  // Handle click or touch events
-  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault()
-    startGame()
-  }
-
-  // Handle spacebar press
-  const handleSpacebar = (e: KeyboardEvent) => {
-    if (e.code === 'Space') {
-      e.preventDefault() // Prevent the page from scrolling down
-      startGame()
-    }
-  }
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
-    if (!canvas || !ctx) return
-
-    // Dynamically adjust canvas size based on screen width (for mobile support)
-    const resizeCanvas = () => {
-      const canvasWidth = Math.min(window.innerWidth - 20, 400) // Make sure it's responsive on mobile
-      const canvasHeight = canvasWidth * 1.5 // Maintain the same aspect ratio
-      canvas.width = canvasWidth
-      canvas.height = canvasHeight
-
-      // Reset bird position
-      if (birdRef.current) {
-        birdRef.current.x = INITIAL_BIRD_X_POSITION
-        birdRef.current.y = canvas.height / 2
-      }
-    }
-
-    // Call resizeCanvas initially to set the right dimensions
-    resizeCanvas()
-
-    // Add event listener for resizing
-    window.addEventListener('resize', resizeCanvas)
-
-    // Add event listener for keydown
-    window.addEventListener('keydown', handleSpacebar)
-
-    // Game loop
-    let animationFrameId: number
-    const gameLoop = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      if (gameStarted) {
-        // Update the game state
-        updateGame()
-
-        // Draw the game elements
-        drawPipes(ctx, canvas)
-        drawBird(ctx)
+  // Draw the pipes on the canvas
+  const drawPipes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
+    pipesRef.current.forEach((pipe) => {
+      // Fade out pipe as it approaches the left side
+      if (pipe.x < PIPE_FADE_START) {
+        pipe.opacity = Math.max(0, pipe.x / PIPE_FADE_START) // Reduce opacity gradually
       }
 
-      animationFrameId = requestAnimationFrame(gameLoop)
-    }
+      ctx.globalAlpha = pipe.opacity || 1 // Apply opacity
+      ctx.fillStyle = '#4CAF50'
 
-    gameLoop()
-
-    return () => {
-      // Cleanup
-      cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('resize', resizeCanvas)
-      window.removeEventListener('keydown', handleSpacebar)
-    }
-  }, [gameStarted, score, highScore])
+      // Draw top pipe
+      ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.top)
+      // Draw bottom pipe
+      ctx.fillRect(
+        pipe.x,
+        pipe.top + currentPipeGapRef.current,
+        PIPE_WIDTH,
+        canvas.height - pipe.top - currentPipeGapRef.current
+      )
+      ctx.globalAlpha = 1 // Reset opacity after drawing
+    })
+  }
 
   return (
     <div className="relative">
