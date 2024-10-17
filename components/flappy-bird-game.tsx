@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect, useState, useCallback } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -10,8 +10,8 @@ const JUMP = -5
 const PIPE_WIDTH = 50
 const PIPE_GAP = 300
 const PIPE_SPEED = 2
-const PIPE_FADE_START = 100
-const INITIAL_BIRD_X_POSITION = 50
+const PIPE_FADE_START = 100 // Start fading when pipes are 100px away from the left side
+const INITIAL_BIRD_X_POSITION = 50 // Bird's initial x-position
 
 interface Bird {
   x: number
@@ -22,8 +22,8 @@ interface Bird {
 interface Pipe {
   x: number
   top: number
-  opacity?: number
-  passed?: boolean
+  opacity?: number // Opacity for fading effect
+  passed?: boolean // Track if the pipe is passed for scoring
 }
 
 export default function FlappyBirdGame() {
@@ -44,11 +44,13 @@ export default function FlappyBirdGame() {
   // Ref to hold the latest value of gameStarted
   const gameStartedRef = useRef<boolean>(gameStarted)
 
-  // Remove the useEffect that updates gameStartedRef
-  // Instead, update gameStartedRef.current immediately when gameStarted changes
+  // Update the gameStartedRef whenever gameStarted changes
+  useEffect(() => {
+    gameStartedRef.current = gameStarted
+  }, [gameStarted])
 
   // Reset the game to its initial state
-  const resetGame = useCallback(() => {
+  const resetGame = () => {
     const canvas = canvasRef.current
     if (canvas) {
       birdRef.current = { x: INITIAL_BIRD_X_POSITION, y: canvas.height / 2, velocity: 0 }
@@ -58,24 +60,12 @@ export default function FlappyBirdGame() {
       frameCountRef.current = 0
       setScore(0)
     }
-  }, [])
-
-  // Generate a new pipe
-  const generatePipe = useCallback(() => {
-    const canvas = canvasRef.current
-    if (canvas) {
-      const minHeight = 50
-      const maxHeight = canvas.height - currentPipeGapRef.current - minHeight
-      const height = Math.random() * (maxHeight - minHeight) + minHeight
-      pipesRef.current.push({ x: canvas.width, top: height, opacity: 1 })
-    }
-  }, [])
+  }
 
   // Start the game
-  const startGame = useCallback(() => {
+  const startGame = () => {
     if (!gameStartedRef.current) {
       setGameStarted(true)
-      gameStartedRef.current = true // Update immediately
       setStartTextVisible(false)
       resetGame()
       generatePipe()
@@ -83,45 +73,114 @@ export default function FlappyBirdGame() {
     if (birdRef.current) {
       birdRef.current.velocity = JUMP
     }
-  }, [resetGame, generatePipe])
+  }
 
   // Handle click or touch events
-  const handleClick = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault()
     startGame()
-  }, [startGame])
+  }
 
   // Handle spacebar press
-  const handleSpacebar = useCallback((e: KeyboardEvent) => {
+  const handleSpacebar = (e: KeyboardEvent) => {
     if (e.code === 'Space') {
-      e.preventDefault()
+      e.preventDefault() // Prevent the page from scrolling down
       startGame()
     }
-  }, [startGame])
+  }
 
-  // Handle game over state
-  const gameOver = useCallback(() => {
-    setGameStarted(false)
-    gameStartedRef.current = false // Update immediately
-    setGameOverTextVisible(true)
-    if (score > highScore) {
-      setHighScore(score)
+  // Generate a new pipe
+  const generatePipe = () => {
+    const canvas = canvasRef.current
+    if (canvas) {
+      const minHeight = 50
+      const maxHeight = canvas.height - currentPipeGapRef.current - minHeight
+      const height = Math.random() * (maxHeight - minHeight) + minHeight
+      pipesRef.current.push({ x: canvas.width, top: height, opacity: 1 })
     }
-    setTimeout(() => setGameOverTextVisible(false), 2000)
-    resetGame()
-  }, [score, highScore, resetGame])
+  }
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    if (!canvas || !ctx) return
+
+    // Dynamically adjust canvas size based on screen width (for mobile support)
+    const resizeCanvas = () => {
+      const canvasWidth = Math.min(window.innerWidth - 20, 400) // Responsive width
+      const canvasHeight = canvasWidth * 1.5 // Maintain aspect ratio
+      canvas.width = canvasWidth
+      canvas.height = canvasHeight
+
+      // Reset bird position
+      if (birdRef.current) {
+        birdRef.current.x = INITIAL_BIRD_X_POSITION
+        birdRef.current.y = canvas.height / 2
+      }
+    }
+
+    // Call resizeCanvas initially to set the right dimensions
+    resizeCanvas()
+    // Add event listener for resizing
+    window.addEventListener('resize', resizeCanvas)
+    // Add event listener for keydown
+    window.addEventListener('keydown', handleSpacebar)
+
+    // Start the game automatically on page load
+    startGame()
+
+    // Game loop
+    const gameLoop = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      if (gameStartedRef.current) {
+        updateGame()
+        drawPipes(ctx, canvas)
+        drawBird(ctx)
+      } else {
+        // Draw the bird at its starting position
+        drawBird(ctx)
+      }
+
+      animationFrameIdRef.current = requestAnimationFrame(gameLoop)
+    }
+
+    gameLoop()
+
+    return () => {
+      // Cleanup
+      cancelAnimationFrame(animationFrameIdRef.current)
+      window.removeEventListener('resize', resizeCanvas)
+      window.removeEventListener('keydown', handleSpacebar)
+    }
+  }, []) // Empty dependency array to run only once
+
+  // Update the game state
+  const updateGame = () => {
+    const canvas = canvasRef.current
+    if (canvas) {
+      updateBird(canvas)
+      updatePipes(canvas)
+
+      // Generate pipes periodically
+      frameCountRef.current++
+      if (frameCountRef.current % 200 === 0) {
+        generatePipe()
+      }
+    }
+  }
 
   // Update the bird's position and velocity
-  const updateBird = useCallback((canvas: HTMLCanvasElement) => {
+  const updateBird = (canvas: HTMLCanvasElement) => {
     if (birdRef.current) {
       birdRef.current.velocity += GRAVITY
       birdRef.current.y += birdRef.current.velocity
 
       // Apply easing to the bird's movement
       if (birdRef.current.velocity > 0) {
-        birdRef.current.velocity *= 0.98
+        birdRef.current.velocity *= 0.98 // Slightly reduce velocity for smoother fall
       } else {
-        birdRef.current.velocity *= 0.95
+        birdRef.current.velocity *= 0.95 // Slightly reduce upward velocity for smoother jumps
       }
 
       // Bird collision with boundaries
@@ -129,10 +188,10 @@ export default function FlappyBirdGame() {
         gameOver()
       }
     }
-  }, [gameOver])
+  }
 
   // Update the position of the pipes and check for collisions
-  const updatePipes = useCallback((canvas: HTMLCanvasElement) => {
+  const updatePipes = (canvas: HTMLCanvasElement) => {
     pipesRef.current.forEach((pipe, index) => {
       pipe.x -= currentPipeSpeedRef.current
 
@@ -144,8 +203,8 @@ export default function FlappyBirdGame() {
 
           // Increase difficulty every 5 points
           if (newScore % 5 === 0) {
-            currentPipeSpeedRef.current += 0.5
-            currentPipeGapRef.current = Math.max(150, currentPipeGapRef.current - 10)
+            currentPipeSpeedRef.current += 0.5 // Increase pipe speed
+            currentPipeGapRef.current = Math.max(150, currentPipeGapRef.current - 10) // Decrease pipe gap
           }
 
           return newScore
@@ -167,44 +226,38 @@ export default function FlappyBirdGame() {
         pipesRef.current.splice(index, 1)
       }
     })
-  }, [gameOver])
+  }
 
-  // Update the game state
-  const updateGame = useCallback(() => {
-    const canvas = canvasRef.current
-    if (canvas) {
-      updateBird(canvas)
-      updatePipes(canvas)
-
-      // Generate pipes periodically
-      frameCountRef.current++
-      if (frameCountRef.current % 200 === 0) {
-        generatePipe()
-      }
+  // Handle game over state
+  const gameOver = () => {
+    setGameStarted(false)
+    setGameOverTextVisible(true)
+    if (score > highScore) {
+      setHighScore(score)
     }
-  }, [updateBird, updatePipes, generatePipe])
+    setTimeout(() => setGameOverTextVisible(false), 2000) // Fade out after 2 seconds
+    resetGame()
+  }
 
   // Draw the bird on the canvas
-  const drawBird = useCallback((ctx: CanvasRenderingContext2D) => {
+  const drawBird = (ctx: CanvasRenderingContext2D) => {
     if (birdRef.current) {
       ctx.fillStyle = '#FFA500'
       ctx.beginPath()
       ctx.arc(birdRef.current.x, birdRef.current.y, 20, 0, 2 * Math.PI)
       ctx.fill()
     }
-  }, [])
+  }
 
   // Draw the pipes on the canvas
-  const drawPipes = useCallback((ctx: CanvasRenderingContext2D) => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+  const drawPipes = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
     pipesRef.current.forEach((pipe) => {
       // Fade out pipe as it approaches the left side
       if (pipe.x < PIPE_FADE_START) {
-        pipe.opacity = Math.max(0, pipe.x / PIPE_FADE_START)
+        pipe.opacity = Math.max(0, pipe.x / PIPE_FADE_START) // Reduce opacity gradually
       }
 
-      ctx.globalAlpha = pipe.opacity || 1
+      ctx.globalAlpha = pipe.opacity || 1 // Apply opacity
       ctx.fillStyle = '#4CAF50'
 
       // Draw top pipe
@@ -216,60 +269,9 @@ export default function FlappyBirdGame() {
         PIPE_WIDTH,
         canvas.height - pipe.top - currentPipeGapRef.current
       )
-      ctx.globalAlpha = 1
+      ctx.globalAlpha = 1 // Reset opacity after drawing
     })
-  }, [])
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
-    if (!canvas || !ctx) return
-
-    // Dynamically adjust canvas size
-    const resizeCanvas = () => {
-      const canvasWidth = Math.min(window.innerWidth - 20, 400)
-      const canvasHeight = canvasWidth * 1.5
-      canvas.width = canvasWidth
-      canvas.height = canvasHeight
-
-      // Reset bird position
-      if (birdRef.current) {
-        birdRef.current.x = INITIAL_BIRD_X_POSITION
-        birdRef.current.y = canvas.height / 2
-      }
-    }
-
-    // Call resizeCanvas initially
-    resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
-    window.addEventListener('keydown', handleSpacebar)
-
-    // Start the game automatically
-    startGame()
-
-    // Game loop
-    const gameLoop = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      if (gameStartedRef.current) {
-        updateGame()
-        drawPipes(ctx)
-        drawBird(ctx)
-      } else {
-        drawBird(ctx)
-      }
-
-      animationFrameIdRef.current = requestAnimationFrame(gameLoop)
-    }
-
-    gameLoop()
-
-    return () => {
-      cancelAnimationFrame(animationFrameIdRef.current)
-      window.removeEventListener('resize', resizeCanvas)
-      window.removeEventListener('keydown', handleSpacebar)
-    }
-  }, [startGame, handleSpacebar, updateGame, drawPipes, drawBird])
+  }
 
   return (
     <div className="relative">
@@ -285,12 +287,12 @@ export default function FlappyBirdGame() {
             onTouchStart={handleClick}
           />
           {startTextVisible && (
-            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white">
+            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white animate-fadeIn">
               Tap or Press Space to Start
             </div>
           )}
           {gameOverTextVisible && (
-            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-red-500">
+            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-red-500 animate-fadeInOut">
               Game Over
             </div>
           )}
