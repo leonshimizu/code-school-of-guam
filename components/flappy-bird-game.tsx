@@ -89,7 +89,7 @@ export default function FlappyBirdGame() {
 
         ctx.globalAlpha = pipe.opacity || 1 // Apply opacity
         ctx.fillStyle = '#4CAF50'
-        
+
         // Draw top pipe
         ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.top)
         // Draw bottom pipe
@@ -173,6 +173,34 @@ export default function FlappyBirdGame() {
       resetGame()
     }
 
+    const startGame = () => {
+      if (!gameStarted) {
+        setGameStarted(true)
+        setStartTextVisible(false) // Hide start text
+        resetGame()
+        generatePipe()
+      }
+      bird.velocity = JUMP
+    }
+
+    const handleClick = (e: MouseEvent | TouchEvent) => {
+      e.preventDefault()
+      startGame()
+    }
+
+    const handleSpacebar = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault() // Prevent the page from scrolling down
+        startGame()
+      }
+    }
+
+    // Add event listeners
+    canvas.addEventListener('click', handleClick)
+    canvas.addEventListener('touchstart', handleClick, { passive: false }) // For mobile
+    window.addEventListener('keydown', handleSpacebar) // Listen for spacebar press
+    window.addEventListener('resize', resizeCanvas) // Adjust canvas on window resize
+
     const gameLoop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -188,32 +216,10 @@ export default function FlappyBirdGame() {
       animationFrameId = requestAnimationFrame(gameLoop)
     }
 
-    const handleClick = () => {
-      if (!gameStarted) {
-        setGameStarted(true)
-        setStartTextVisible(false) // Hide start text
-        resetGame()
-        generatePipe()
-      }
-      bird.velocity = JUMP
-    }
-
-    const handleSpacebar = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        e.preventDefault();  // Prevent the page from scrolling down
-        handleClick();
-      }
-    }
-
-    // Add event listeners for both desktop and mobile (touchstart)
-    canvas.addEventListener('click', handleClick)
-    canvas.addEventListener('touchstart', handleClick) // For mobile
-    window.addEventListener('keydown', handleSpacebar) // Listen for spacebar press
-    window.addEventListener('resize', resizeCanvas) // Adjust canvas on window resize
-
     gameLoop()
 
     return () => {
+      // Cleanup
       cancelAnimationFrame(animationFrameId)
       canvas.removeEventListener('click', handleClick)
       canvas.removeEventListener('touchstart', handleClick) // Clean up touch event listener
@@ -248,7 +254,7 @@ export default function FlappyBirdGame() {
           <div className="text-lg">Score: {score}</div>
           <div className="text-lg">High Score: {highScore}</div>
           {!gameStarted && (
-            <Button 
+            <Button
               onClick={() => setGameStarted(true)}
               className="bg-orange-600 hover:bg-orange-700 text-white"
             >
