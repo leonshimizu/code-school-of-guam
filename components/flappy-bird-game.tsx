@@ -192,6 +192,9 @@ export default function FlappyBirdGame() {
 
   // Update the position of the pipes and check for collisions
   const updatePipes = (canvas: HTMLCanvasElement) => {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     pipesRef.current.forEach((pipe, index) => {
       pipe.x -= currentPipeSpeedRef.current
 
