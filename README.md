@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Code School of Guam Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the official website for the Code School of Guam, built using Next.js, React, and Tailwind CSS.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before you begin, ensure you have the following installed on your local machine:
 
-### `npm start`
+- Node.js (v14.0.0 or later)
+- npm (v6.0.0 or later)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get the application running locally, follow these steps:
 
-### `npm test`
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/code-school-of-guam.git
+   cd code-school-of-guam
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install the dependencies:
+   ```
+   npm install
+   ```
 
-### `npm run build`
+3. Create a `.env.local` file in the root directory and add the following environment variables:
+   ```
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_emailjs_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+   NEXT_PUBLIC_EMAILJS_USER_ID=your_emailjs_user_id
+   ```
+   Replace the values with your actual EmailJS credentials.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Run the development server:
+   ```
+   npm run dev
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Building for Production
 
-### `npm run eject`
+To create a production build, run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm run build
+```
+This will create an optimized production build in the `.next` folder.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This project is configured for deployment on Netlify. The `netlify.toml` file in the root directory contains the necessary configuration.
 
-## Learn More
+To deploy:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Push your changes to your GitHub repository.
+2. Netlify will automatically deploy your site when changes are pushed to the main branch.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+- `app/`: Contains the main pages and layout components.
+- `components/`: Reusable React components.
+- `public/`: Static assets like images and the manifest file.
+- `styles/`: Global CSS styles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Key Features
 
-### Analyzing the Bundle Size
+- Responsive design
+- Interactive sections (About, Programs, Curriculum, etc.)
+- Flappy Bird game demo
+- Contact form with EmailJS integration
+- FAQ accordion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
